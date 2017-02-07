@@ -131,4 +131,11 @@ public class Bibliotheque implements Serializable {
     private Iterator<Lecteur> lesLecteurs() {
         return _dicoLecteur.values().iterator();
     }
+
+    void consulterListeLecteurs() {
+        EntreesSorties.afficherTitre("Liste des lecteurs : ");
+        for (Lecteur l : _dicoLecteur.values()) {
+            EntreesSorties.afficherMessage("Lecteur : " + l.getNumLecteur());
+        }
+    }
 }
