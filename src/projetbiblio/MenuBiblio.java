@@ -15,9 +15,9 @@ public void menuPrincipal() {
 	do {
 		EntreesSorties.afficherMessage(" ========================================================");
 		EntreesSorties.afficherMessage("|                   Menu Principal                       |");
-		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-		EntreesSorties.afficherMessage("| Menu Lecteur : 1                                       |");
-		EntreesSorties.afficherMessage("| Quitter : 0                                            |");
+		//EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
+		EntreesSorties.afficherMessage("| Menu Lecteur :    1                                    |");
+		EntreesSorties.afficherMessage("| Quitter :         0                                    |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menu = EntreesSorties.lireEntier();
 			
@@ -43,10 +43,12 @@ public void menuLecteur() {
 	Integer menuLect;
 	do {
 		EntreesSorties.afficherMessage(" ========================================================");
-		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-		EntreesSorties.afficherMessage("| Nouveau Lecteur : 1                                    |");
-		EntreesSorties.afficherMessage("| Consulter Lecteur : 2                                  |");
-		EntreesSorties.afficherMessage("| Retour Menu Principal : 0                              |");
+                EntreesSorties.afficherMessage("|                   Menu Lecteur                         |");
+		//EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
+		EntreesSorties.afficherMessage("| Nouveau Lecteur :              1                       |");
+		EntreesSorties.afficherMessage("| Consulter Lecteur :            2                       |");
+                EntreesSorties.afficherMessage("| Consulter Liste Lecteurs :     3                       |");
+		EntreesSorties.afficherMessage("| Retour Menu Principal :        0                       |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menuLect = EntreesSorties.lireEntier();
 			
@@ -57,6 +59,10 @@ public void menuLecteur() {
 				}
 				case 2 : {
 					_bibliotheque.consulterLecteur();
+					break;
+				}
+                                case 3 : {
+					_bibliotheque.consulterListeLecteurs();
 					break;
 				}
 				default : {
