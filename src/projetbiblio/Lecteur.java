@@ -73,7 +73,7 @@ public class Lecteur implements Serializable
 		// -----------------------------------------------
 		
 		/*
-		 * La m�thode afficherLecteur affiche l'ensemble des informations relatives � un lecteur.
+		 * La méthode afficherLecteur affiche l'ensemble des informations relatives à un lecteur.
 		 */
 		public void afficherLecteur()
 		{
@@ -87,8 +87,8 @@ public class Lecteur implements Serializable
 		
 		
 		/*
-		 * la m�thode calculAge permet de d�terminer l'age des lecteurs grace a leur date de naissance
-		 * et la date actuelle. De cette fa�on, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
+		 * la méthode calculAge permet de déterminer l'age des lecteurs grace a leur date de naissance
+		 * et la date actuelle. De cette façon, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
 		 */
 		public Integer calculAge() {
 			Integer age;
