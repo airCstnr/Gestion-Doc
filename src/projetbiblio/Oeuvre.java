@@ -1,9 +1,6 @@
-
 package projetbiblio;
 
-
 public class Oeuvre {
-    
 
     // Attributs
     private String numISBN; // {unique}
@@ -11,7 +8,11 @@ public class Oeuvre {
     private String nomEditeur;
     private int dateParution; // type date Date (voir type calendrier grégorien)
     private String nomAuteur;
-    private EnumPublic public; // EnumPublic
+
+    private enum EnumPublic {
+        enfant, adolescent, adulte
+    }; // EnumPublic
+    
     private int dernierExemplaire;
     private int nombreExemplaire;
 
