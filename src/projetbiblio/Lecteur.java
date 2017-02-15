@@ -1,4 +1,3 @@
-import projetbiblio.EntreesSorties;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
@@ -6,8 +5,7 @@ import java.util.Iterator;
 
 // Classe de gestion de Lecteur
 
-public class Lecteur implements Serializable 
-{
+public class Lecteur implements Serializable {
 	
 	private static final long serialVersionUID = 422L;
 	

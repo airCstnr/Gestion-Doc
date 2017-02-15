@@ -1,17 +1,8 @@
-package projetbiblio;
-
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class Oeuvre {
     
-    /**
-     * Enumeration des différents publics.
-     */
-    private enum EnumPublic {
-        enfant, adolescent, adulte
-    };
-
     // Attributs
     private String numISBN; // {unique}
     private String titre;

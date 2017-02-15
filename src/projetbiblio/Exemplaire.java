@@ -1,4 +1,3 @@
-package projetbiblio;
 import java.util.GregorianCalendar;
 
 public class Exemplaire {

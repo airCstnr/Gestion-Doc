@@ -1,5 +1,3 @@
-
-import projetbiblio.EntreesSorties;
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -18,16 +16,14 @@ public class Bibliotheque implements Serializable {
     * garantir l'unicité de ces derniers, et facilitent les recherches et créations.
      */
     private HashMap<Integer, Lecteur> _dicoLecteur;
-    
-    
-    
-    
-    
+    private HashMap<String, Oeuvre> _dicoOeuvres;
+
     // -----------------------------------------------
     //Constructeur
     // -----------------------------------------------
     public Bibliotheque() {
         this.setLecteurs(new HashMap<Integer, Lecteur>());
+        this._dicoOeuvres = new HashMap<>();
 
     }
 
@@ -37,7 +33,6 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Méthodes
     // -----------------------------------------------
-    
     /*
     * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
     * nom, prénom, date de naissance, adresse et numéro de téléphone.
@@ -89,7 +84,7 @@ public class Bibliotheque implements Serializable {
     * un lecteur, par la saisie de son identifiant (numéro de lecteur).
     * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
     * renvoyé a l'utilisateur.
-    */
+     */
     public void consulterLecteur() {
         Integer numLecteur = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
 
@@ -101,14 +96,66 @@ public class Bibliotheque implements Serializable {
             EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");
         }
     }
-    
+
     /**
-     * La méthode consulterListeLecteurs permet d'afficher la liste de tous les lecteurs de la base.
+     * La méthode consulterListeLecteurs permet d'afficher la liste de tous les
+     * lecteurs de la base.
      */
     public void consulterListeLecteurs() {
         EntreesSorties.afficherTitre("Liste des lecteurs : ");
         for (Lecteur l : _dicoLecteur.values()) {
             EntreesSorties.afficherMessage("Lecteur : " + l.getNumLecteur());
+        }
+    }
+
+    public void nouvelExemplaire() {
+        String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
+        Oeuvre o = getOeuvre(nISBN);
+        if (o != null) {
+            GregorianCalendar dateR = EntreesSorties.lireDate("Date de Récéption : ");
+            o.ajoutExemplaire(dateR, true);
+        }
+        System.out.println("La création de l'exemplaire est réussie.");
+    }
+
+    public Oeuvre getOeuvre(String isbn) {
+        return _dicoOeuvres.get(isbn);
+    }
+
+    public void nouvelOuvrage() {
+        String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
+        Oeuvre o = getOeuvre(nISBN);
+        if (o == null) {
+            String titre = EntreesSorties.lireChaine("Titre : ");
+            String auteur = EntreesSorties.lireChaine("Auteur : ");
+            String editeur = EntreesSorties.lireChaine("Editeur : ");
+            GregorianCalendar dateP = EntreesSorties.lireDate("Date de Parution : ");
+            int s_pub = EntreesSorties.lireEntier("Public (0 enfant, 1 ado, 2 adulte) : ");
+            EnumPublic pub;
+            switch (s_pub) {
+                case 0:
+                    // enfant
+                    pub = EnumPublic.ENFANT;
+                    break;
+                case 1:
+                    // ado
+                    pub = EnumPublic.ADOLESCENT;
+                    break;
+                case 2:
+                    // adulte
+                    pub = EnumPublic.ADULTE;
+                    break;
+                default:
+                    // erreur
+                    System.out.println("Le public saisi n'est pas correct !!!!! Erreur (dead).");
+                    return;
+            }
+            o = new Oeuvre(nISBN, titre, editeur, dateP, auteur, pub);
+            lierOeuvre(o, nISBN);
+        }
+        else
+        {
+            System.out.println("N° existe déjà.");
         }
     }
 
@@ -139,6 +186,12 @@ public class Bibliotheque implements Serializable {
     private void lierLecteur(Lecteur L, Integer numLecteur) {
         _dicoLecteur.put(numLecteur, L);
     }
+
+    public void lierOeuvre(Oeuvre o, String numISBN) {
+        this._dicoOeuvres.put(numISBN, o);
+    }
+    
+    
 
     /*
 	 * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir

@@ -1,6 +1,3 @@
-
-import projetbiblio.EntreesSorties;
-
 public class MenuBiblio {
 
     private Bibliotheque _bibliotheque;
@@ -94,6 +91,7 @@ public class MenuBiblio {
             switch (menuOeuvre) {
                 case 1: {
                     // nouvelOuvrage();
+                    _bibliotheque.nouvelOuvrage();
                     break;
                 }
                 case 2: {
