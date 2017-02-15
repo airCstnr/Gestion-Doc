@@ -13,12 +13,16 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     //Attributs
     // -----------------------------------------------
-    private HashMap<Integer, Lecteur> _dicoLecteur;
-
     /*
-		 * Le dictionnaire de lecteur permet à bibliotheque de 
-		 * garantir l'unicité de ces derniers, et facilitent les recherches et créations.
+    * Le dictionnaire de lecteur permet à bibliotheque de 
+    * garantir l'unicité de ces derniers, et facilitent les recherches et créations.
      */
+    private HashMap<Integer, Lecteur> _dicoLecteur;
+    
+    
+    
+    
+    
     // -----------------------------------------------
     //Constructeur
     // -----------------------------------------------
@@ -33,14 +37,15 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Méthodes
     // -----------------------------------------------
+    
     /*
-		 * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
-		 * nom, prénom, date de naissance, adresse et numéro de téléphone.
-		 * L'age doit être compris entre 3 et 110 ans
-		 * Le lecteur est identifié par son numéro, si celui ci existe déjà dans le dictionnaire
-		 * de bibliothèque, un message d'erreur est affiché.
-		 * Une fois le nouveau lecteur créé, il est ajouté au dictionnaire de lecteur
-		 * afin de garantir la cohérence des données.
+    * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
+    * nom, prénom, date de naissance, adresse et numéro de téléphone.
+    * L'age doit être compris entre 3 et 110 ans
+    * Le lecteur est identifié par son numéro, si celui ci existe déjà dans le dictionnaire
+    * de bibliothèque, un message d'erreur est affiché.
+    * Une fois le nouveau lecteur créé, il est ajouté au dictionnaire de lecteur
+    * afin de garantir la cohérence des données.
      */
     public void nouveauLecteur() {
         Integer numLecteur = EntreesSorties.lireEntier("Entrez le numero de lecteur :");
@@ -80,11 +85,11 @@ public class Bibliotheque implements Serializable {
     }
 
     /*
-	 * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
-	 * un lecteur, par la saisie de son identifiant (numéro de lecteur).
-	 * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
-	 * renvoyé a l'utilisateur.
-     */
+    * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
+    * un lecteur, par la saisie de son identifiant (numéro de lecteur).
+    * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
+    * renvoyé a l'utilisateur.
+    */
     public void consulterLecteur() {
         Integer numLecteur = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
 
@@ -94,6 +99,16 @@ public class Bibliotheque implements Serializable {
             L.afficherLecteur();
         } else {
             EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");
+        }
+    }
+    
+    /**
+     * La méthode consulterListeLecteurs permet d'afficher la liste de tous les lecteurs de la base.
+     */
+    public void consulterListeLecteurs() {
+        EntreesSorties.afficherTitre("Liste des lecteurs : ");
+        for (Lecteur l : _dicoLecteur.values()) {
+            EntreesSorties.afficherMessage("Lecteur : " + l.getNumLecteur());
         }
     }
 
@@ -133,10 +148,4 @@ public class Bibliotheque implements Serializable {
         return _dicoLecteur.values().iterator();
     }
 
-    void consulterListeLecteurs() {
-        EntreesSorties.afficherTitre("Liste des lecteurs : ");
-        for (Lecteur l : _dicoLecteur.values()) {
-            EntreesSorties.afficherMessage("Lecteur : " + l.getNumLecteur());
-        }
-    }
 }
