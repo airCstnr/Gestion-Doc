@@ -1,18 +1,22 @@
 package projetbiblio;
 
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class Oeuvre {
     
+    /**
+     * Enumeration des différents publics.
+     */
     private enum EnumPublic {
         enfant, adolescent, adulte
-    }; // EnumPublic
+    };
 
     // Attributs
     private String numISBN; // {unique}
     private String titre;
     private String nomEditeur;
-    private int dateParution; // type date Date (voir type calendrier grégorien)
+    private GregorianCalendar dateParution;
     private String nomAuteur;
     private int dernierExemplaire;
     private int nombreExemplaires;
@@ -20,7 +24,7 @@ public class Oeuvre {
     private HashMap<Integer, Exemplaire> exemplaires;
 
     // constructeur
-    public Oeuvre(String numISBN, String titre, String nomEditeur, int dateParution, String nomAuteur, EnumPublic pub) {
+    public Oeuvre(String numISBN, String titre, String nomEditeur, GregorianCalendar dateParution, String nomAuteur, EnumPublic pub) {
         this.numISBN = numISBN;
         this.titre = titre;
         this.nomEditeur = nomEditeur;
@@ -49,7 +53,7 @@ public class Oeuvre {
         return nomEditeur;
     }
 
-    public int getDateParution() {
+    public GregorianCalendar getDateParution() {
         return dateParution;
     }
 
@@ -66,9 +70,9 @@ public class Oeuvre {
      * @param dateReception
      * @param empruntable 
      */
-    public void ajoutExemplaire(date dateReception, boolean empruntable) {
+    public void ajoutExemplaire(GregorianCalendar dateReception, boolean empruntable) {
         int numExemplaire = this.dernierExemplaire++;
-        Exemplaire e = new Exemplaire(dateReception, empruntable, numExemplaire, this);
+        Exemplaire e = new Exemplaire(numExemplaire, dateReception, empruntable, this);
         setExemplaire(e, numExemplaire);
     }
 
@@ -93,7 +97,7 @@ public class Oeuvre {
      * Affiche pour chaque exemplaires son N°
      */
     public void afficherExemplaire() {
-        for (Exemplaire e : exemplaires) {
+        for (Exemplaire e : exemplaires.values()) {
             e.afficher();
         }
     }
