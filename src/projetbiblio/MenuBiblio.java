@@ -1,4 +1,7 @@
 
+import projetbiblio.EntreesSorties;
+
+
 public class MenuBiblio {
 	private Bibliotheque _bibliotheque;
 	

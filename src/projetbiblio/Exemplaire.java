@@ -1,13 +1,14 @@
 package projetbiblio;
+import java.util.GregorianCalendar;
 
 public class Exemplaire {
 
     private int numExemplaire;
-    private date dateReception;
+    private GregorianCalendar dateReception;
     private boolean empruntable;
     private Oeuvre o;
 
-    public Exemplaire(int numExemplaire, date dateReception, boolean empruntable, Oeuvre o) {
+    public Exemplaire(int numExemplaire, GregorianCalendar dateReception, boolean empruntable, Oeuvre o) {
         this.numExemplaire = numExemplaire;
         this.dateReception = dateReception;
         this.empruntable = empruntable;

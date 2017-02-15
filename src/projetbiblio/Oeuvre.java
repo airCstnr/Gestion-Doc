@@ -1,5 +1,7 @@
 package projetbiblio;
 
+import java.util.HashMap;
+
 public class Oeuvre {
     
     private enum EnumPublic {
@@ -15,7 +17,7 @@ public class Oeuvre {
     private int dernierExemplaire;
     private int nombreExemplaires;
     private EnumPublic pub;
-    private HashMap<int, Exemplaire> exemplaires;
+    private HashMap<Integer, Exemplaire> exemplaires;
 
     // constructeur
     public Oeuvre(String numISBN, String titre, String nomEditeur, int dateParution, String nomAuteur, EnumPublic pub) {
@@ -27,12 +29,12 @@ public class Oeuvre {
         this.dernierExemplaire = 1; // cet atttribut sera appelé quand on crée un nouvel exemplaire
         this.nombreExemplaires = 0;
         this.pub = pub;
-        this.exemplaires = new HashMap<int, Exemplaire>();
+        this.exemplaires = new HashMap<Integer, Exemplaire>();
     }
     
     // méthodes publiques
     public void setExemplaire(Exemplaire e, int numExemplaire){
-        exemplaires.add(numExemplaire, e);
+        exemplaires.put(numExemplaire, e);
     }
 
     public String getNumISBN() {
