@@ -98,6 +98,7 @@ public class MenuBiblio {
                 }
                 case 2: {
                     // consulterOuvrage();
+                    _bibliotheque.consulterOuvrage();
                     break;
                 }
                 case 3: {
@@ -107,10 +108,12 @@ public class MenuBiblio {
                 }
                 case 4: {
                     // nouvelExemplaire();
+                    _bibliotheque.nouvelExemplaire();
                     break;
                 }
                 case 5: {
-                    // consulterExemplairesOuvrage();
+                    // consulterExemplaireOuvrage();
+                    _bibliotheque.consulterExemplaireOuvrage();
                     break;
                 }
                 default: {
