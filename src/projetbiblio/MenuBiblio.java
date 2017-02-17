@@ -102,6 +102,7 @@ public class MenuBiblio {
                 }
                 case 3: {
                     // consulterListeOuvrages();
+                    _bibliotheque.consulterListeOuvrages();
                     break;
                 }
                 case 4: {

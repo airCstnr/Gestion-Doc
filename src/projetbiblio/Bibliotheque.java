@@ -1,3 +1,4 @@
+
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -152,10 +153,18 @@ public class Bibliotheque implements Serializable {
             }
             o = new Oeuvre(nISBN, titre, editeur, dateP, auteur, pub);
             lierOeuvre(o, nISBN);
-        }
-        else
-        {
+        } else {
             System.out.println("N° existe déjà.");
+        }
+    }
+
+    /**
+     * Affiche la liste des oeuvres enregistrées dans la base.
+     */
+    public void consulterListeOuvrages() {
+        EntreesSorties.afficherTitre("Liste des Oeuvres : ");
+        for (Oeuvre o : _dicoOeuvres.values()) {
+            EntreesSorties.afficherMessage("Oeuvre : " + o.getTitre() + "\tN° ISBN : " + o.getNumISBN());
         }
     }
 
@@ -190,8 +199,6 @@ public class Bibliotheque implements Serializable {
     public void lierOeuvre(Oeuvre o, String numISBN) {
         this._dicoOeuvres.put(numISBN, o);
     }
-    
-    
 
     /*
 	 * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
