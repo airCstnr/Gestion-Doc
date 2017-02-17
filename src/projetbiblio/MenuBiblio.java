@@ -83,7 +83,8 @@ public class MenuBiblio {
             EntreesSorties.afficherMessage("|                   Menu Oeuvre                          |");
             EntreesSorties.afficherMessage("| Nouvel Ouvrage :                   1                   |");
             EntreesSorties.afficherMessage("| Consulter Ouvrage :                2                   |");
-            EntreesSorties.afficherMessage("| Consulter Exemplaires Ouvrage :    3                   |");
+            EntreesSorties.afficherMessage("| Nouvel Exemplaires :               3                   |");
+            EntreesSorties.afficherMessage("| Consulter Exemplaires Ouvrage :    4                   |");
             EntreesSorties.afficherMessage("| Retour Menu Principal :            0                   |");
             EntreesSorties.afficherMessage(" ========================================================");
             menuOeuvre = EntreesSorties.lireEntier();
@@ -99,6 +100,10 @@ public class MenuBiblio {
                     break;
                 }
                 case 3: {
+                    // nouvelExemplaire();
+                    break;
+                }
+                case 4: {
                     // consulterExemplairesOuvrage();
                     break;
                 }
