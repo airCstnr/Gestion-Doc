@@ -10,7 +10,7 @@ public class Main {
 
 		Bibliotheque bibliotheque = new Bibliotheque();
 		
-		String nomFich="save.ser";
+		String nomFich="save1.ser";
 		
 		/*---------------------------------------------------------------------------------------------
 		 * Récupération des serialisation précédentes dans le fichier du nom de "save.ser".

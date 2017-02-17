@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Exemplaire {
+public class Exemplaire implements Serializable{
 
     private int numExemplaire;
     private GregorianCalendar dateReception;
