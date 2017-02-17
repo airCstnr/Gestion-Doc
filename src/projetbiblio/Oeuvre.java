@@ -81,7 +81,9 @@ public class Oeuvre {
     public void afficherDetails() {
         EntreesSorties.afficherMessage("Auteur : " + this.getNomAuteur());
         EntreesSorties.afficherMessage("Editeur : " + this.getNomEditeur());
-        EntreesSorties.afficherMessage("Date de Parution : " + this.getDateParution());
+        EntreesSorties.afficherMessage("Date de Parution : ");
+        String date = EntreesSorties.ecrireDate(this.getDateParution());
+        System.out.println(date);
     }
 
     /**
