@@ -18,7 +18,7 @@ public class Bibliotheque implements Serializable {
      */
     private HashMap<Integer, Lecteur> _dicoLecteur;
     private HashMap<String, Oeuvre> _dicoOeuvres;
-    
+
     private int numLecteur;
 
     // -----------------------------------------------
@@ -72,9 +72,9 @@ public class Bibliotheque implements Serializable {
         String tel = EntreesSorties.lireChaine("Entrez le numero de telephone :");
         EntreesSorties.afficherMessage("Fin de saisie");
 
-        Lecteur L = new Lecteur( nom, prenom, numLecteur, dateNaiss, adresse, tel, age);
+        Lecteur L = new Lecteur(nom, prenom, numLecteur, dateNaiss, adresse, tel, age);
         lierLecteur(L, numLecteur);
-        System.out.println("N° de Lecteur attribué : "+numLecteur);
+        System.out.println("N° de Lecteur attribué : " + numLecteur);
 
     }
 
@@ -84,12 +84,11 @@ public class Bibliotheque implements Serializable {
     * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
     * renvoyé a l'utilisateur.
      */
-    
-    public int dernierLecteur()
-    {
+    public int dernierLecteur() {
         numLecteur++;
         return numLecteur;
     }
+
     public void consulterLecteur() {
         Integer numLecteur = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
 
@@ -171,40 +170,31 @@ public class Bibliotheque implements Serializable {
             EntreesSorties.afficherMessage("Oeuvre : " + o.getTitre() + "\tN° ISBN : " + o.getNumISBN());
         }
     }
-    
+
     /**
      * Affiche les détails d'un ouvrage
      */
-    public void consulterOuvrage()
-    {
+    public void consulterOuvrage() {
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
-        if(o != null)
-        {
+        if (o != null) {
             o.afficherReduit();
             o.afficherDetails();
-        }
-        else
-        {
+        } else {
             EntreesSorties.afficherMessage("L'oeuvre demandée n'existe pas.");
         }
     }
-    
-    
+
     /**
      * Affiche les détails des exemplaires d'un ouvrage
      */
-    public void consulterExemplaireOuvrage()
-    {
+    public void consulterExemplaireOuvrage() {
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
-        if (o != null)
-        {
+        if (o != null) {
             o.afficherReduit();
             o.afficherExemplaire();
-        }
-        else
-        {
+        } else {
             EntreesSorties.afficherMessage("L'oeuvre demandée n'existe pas.");
         }
     }
