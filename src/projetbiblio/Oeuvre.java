@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
-public class Oeuvre {
+public class Oeuvre implements Serializable{
     
     // Attributs
     private String numISBN; // {unique}
