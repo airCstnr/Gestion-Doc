@@ -26,7 +26,7 @@ public class Lecteur implements Serializable {
 		//Constructeur
 	// -----------------------------------------------
 		
-		public Lecteur(String nom, String prenom, Integer numLecteur, GregorianCalendar dateNaiss, String adresse, String tel)
+		public Lecteur(String nom, String prenom, Integer numLecteur, GregorianCalendar dateNaiss, String adresse, String tel, Integer ageLect)
 		{
 			this.setNom(nom);
 			this.setPrenom(prenom);

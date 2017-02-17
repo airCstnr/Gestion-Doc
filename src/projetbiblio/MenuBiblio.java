@@ -7,21 +7,21 @@ public class MenuBiblio {
     }
 
     /*
-     * menuPrincipal permet � l'utilisateur de selectionner un type de sous menu (Lecteur, Ouvrage ou Exemplaire) 
-     * o� il effectuera par la suite l'action d�sir�e. Si l'utilisateur a fini d'utiliuser le programme, il choisit l'option Quitter.
+     * menuPrincipal permet à l'utilisateur de selectionner un type de sous menu (Lecteur, Ouvrage ou Exemplaire) 
+     * où il effectuera par la suite l'action désirée. Si l'utilisateur a fini d'utiliuser le programme, il choisit l'option Quitter.
      */
     public void menuPrincipal() {
         Integer menu;
         do {
             EntreesSorties.afficherMessage(" ========================================================");
             EntreesSorties.afficherMessage("|                   Menu Principal                       |");
-            //EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
             EntreesSorties.afficherMessage("| Menu Lecteur :    1                                    |");
             EntreesSorties.afficherMessage("| Menu Oeuvre :     2                                    |");
+            EntreesSorties.afficherMessage("| Menu Emprunt :    3                                    |");
             EntreesSorties.afficherMessage("| Quitter :         0                                    |");
             EntreesSorties.afficherMessage(" ========================================================");
             menu = EntreesSorties.lireEntier();
-
+            
             switch (menu) {
                 case 1: {
                     this.menuLecteur();
@@ -31,6 +31,10 @@ public class MenuBiblio {
                     this.menuOeuvre();
                     break;
                 }
+                case 3: {
+                    this.menuEmprunt();
+                    break;
+                }
                 default: {
                     break;
                 }
@@ -38,24 +42,24 @@ public class MenuBiblio {
         } while (menu != 0);
     }
 
-    /* menuLect permet d'effectuer une s�rie d'action concernant les utilisateur (lecteurs) de la biblioth�que.
-	 * Une fois une action effectu�e, l'utilisateur sera rediriger vers ce m�me menu afin de pouvoir selectionner
-	 * une nouvelle fois une action concernant les lecteurs.
-	 * "Retour Menu Principal" renvoi l'utilisateur au menu principal.
+    /* 
+     * menuLect permet d'effectuer une série d'action concernant les utilisateur (lecteurs) de la bibliothèque.
+     * Une fois une action effectuée, l'utilisateur sera rediriger vers ce même menu afin de pouvoir selectionner
+     * une nouvelle fois une action concernant les lecteurs.
+     * "Retour Menu Principal" renvoie l'utilisateur au menu principal.
      */
     public void menuLecteur() {
         Integer menuLect;
         do {
             EntreesSorties.afficherMessage(" ========================================================");
             EntreesSorties.afficherMessage("|                   Menu Lecteur                         |");
-            //EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
             EntreesSorties.afficherMessage("| Nouveau Lecteur :              1                       |");
             EntreesSorties.afficherMessage("| Consulter Lecteur :            2                       |");
             EntreesSorties.afficherMessage("| Consulter Liste Lecteurs :     3                       |");
             EntreesSorties.afficherMessage("| Retour Menu Principal :        0                       |");
             EntreesSorties.afficherMessage(" ========================================================");
             menuLect = EntreesSorties.lireEntier();
-
+            
             switch (menuLect) {
                 case 1: {
                     _bibliotheque.nouveauLecteur();
@@ -76,6 +80,9 @@ public class MenuBiblio {
         } while (menuLect != 0);
     }
 
+    /**
+     * menuOeuvre permet à l'utilisateur d'effectuer plusieurs opération sur les oeuvres et leurs exemplaires
+     */
     private void menuOeuvre() {
         Integer menuOeuvre;
         do {
@@ -92,27 +99,22 @@ public class MenuBiblio {
 
             switch (menuOeuvre) {
                 case 1: {
-                    // nouvelOuvrage();
                     _bibliotheque.nouvelOuvrage();
                     break;
                 }
                 case 2: {
-                    // consulterOuvrage();
                     _bibliotheque.consulterOuvrage();
                     break;
                 }
                 case 3: {
-                    // consulterListeOuvrages();
                     _bibliotheque.consulterListeOuvrages();
                     break;
                 }
                 case 4: {
-                    // nouvelExemplaire();
                     _bibliotheque.nouvelExemplaire();
                     break;
                 }
                 case 5: {
-                    // consulterExemplaireOuvrage();
                     _bibliotheque.consulterExemplaireOuvrage();
                     break;
                 }
@@ -121,6 +123,57 @@ public class MenuBiblio {
                 }
             }
         } while (menuOeuvre != 0);
+    }
+    
+    /**
+     * menuEmprunt permet à l'utilisateur d'effectuer plusieurs opération sur les emprunts
+     */
+    private void menuEmprunt() {
+        Integer menuEmprunt;
+        do {
+            EntreesSorties.afficherMessage(" ========================================================");
+            EntreesSorties.afficherMessage("|                   Menu Emprunt                         |");
+            EntreesSorties.afficherMessage("| Emprunter Exemplaire :             1                   |");
+            EntreesSorties.afficherMessage("| Rendre Exemplaire :                2                   |");
+            EntreesSorties.afficherMessage("| Consulter Emprunts Lecteur :       3                   |");
+            EntreesSorties.afficherMessage("| Relancer Lecteur :                 4                   |");
+            EntreesSorties.afficherMessage("| Consulter Liste Emprunts :         5                   |");
+            EntreesSorties.afficherMessage("| Retour Menu Principal :            0                   |");
+            EntreesSorties.afficherMessage(" ========================================================");
+            menuEmprunt = EntreesSorties.lireEntier();
+
+            switch (menuEmprunt) {
+                case 1: {
+                    //_bibliotheque.emprunterExemplaire();
+                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
+                    //break;
+                }
+                case 2: {
+                    //_bibliotheque.rendreExemplaire();
+                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
+                    //break;
+                }
+                case 3: {
+                    //_bibliotheque.consulterEmpruntsLecteur();
+                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
+                    //break;
+                }
+                case 4: {
+                    //_bibliotheque.relancerLecteur();
+                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
+                    //break;
+                }
+                case 5: {
+                    //_bibliotheque.consulterListeEmprunts();
+                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
+                    //break;
+                }
+                default: {
+                    EntreesSorties.afficherMessage("Pas un choix.");
+                    break;
+                }
+            }
+        } while (menuEmprunt != 0);
     }
 
 }
