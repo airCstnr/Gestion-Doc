@@ -101,6 +101,7 @@ public class MenuBiblio {
                 }
                 case 3: {
                     // nouvelExemplaire();
+                    _bibliotheque.nouvelExemplaire();
                     break;
                 }
                 case 4: {

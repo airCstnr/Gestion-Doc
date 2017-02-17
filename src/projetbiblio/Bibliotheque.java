@@ -114,8 +114,8 @@ public class Bibliotheque implements Serializable {
         if (o != null) {
             GregorianCalendar dateR = EntreesSorties.lireDate("Date de Récéption : ");
             o.ajoutExemplaire(dateR, true);
+            EntreesSorties.afficherMessage("La création de l'exemplaire est réussie.");
         }
-        System.out.println("La création de l'exemplaire est réussie.");
     }
 
     public Oeuvre getOeuvre(String isbn) {
@@ -147,7 +147,7 @@ public class Bibliotheque implements Serializable {
                     break;
                 default:
                     // erreur
-                    System.out.println("Le public saisi n'est pas correct !!!!! Erreur (dead).");
+                    EntreesSorties.afficherMessage("Le public saisi n'est pas correct !!!!! Erreur (dead).");
                     return;
             }
             o = new Oeuvre(nISBN, titre, editeur, dateP, auteur, pub);
@@ -155,7 +155,37 @@ public class Bibliotheque implements Serializable {
         }
         else
         {
-            System.out.println("N° existe déjà.");
+            EntreesSorties.afficherMessage("N° existe déjà.");
+        }
+    }
+    
+    public void consulterOuvrage()
+    {
+        String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
+        Oeuvre o = getOeuvre(nISBN);
+        if(o != null)
+        {
+            o.afficherReduit();
+            o.afficherDetails();
+        }
+        else
+        {
+            EntreesSorties.afficherMessage("L'oeuvre demandée n'existe pas.");
+        }
+    }
+    
+    public void consulterExemplaireOuvrage()
+    {
+        String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
+        Oeuvre o = getOeuvre(nISBN);
+        if (o != null)
+        {
+            o.afficherReduit();
+            o.afficherExemplaire();
+        }
+        else
+        {
+            EntreesSorties.afficherMessage("L'oeuvre demandée n'existe pas.");
         }
     }
 
