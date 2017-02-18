@@ -145,31 +145,31 @@ public class MenuBiblio {
             switch (menuEmprunt) {
                 case 1: {
                     //_bibliotheque.emprunterExemplaire();
-                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
-                    //break;
+                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    break;
                 }
                 case 2: {
                     //_bibliotheque.rendreExemplaire();
-                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
-                    //break;
+                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    break;
                 }
                 case 3: {
                     //_bibliotheque.consulterEmpruntsLecteur();
-                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
-                    //break;
+                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    break;
                 }
                 case 4: {
                     //_bibliotheque.relancerLecteur();
-                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
-                    //break;
+                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    break;
                 }
                 case 5: {
                     //_bibliotheque.consulterListeEmprunts();
-                    throw new java.lang.UnsupportedOperationException("Pas encore développé (Raf <3)");
-                    //break;
+                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    break;
                 }
                 default: {
-                    EntreesSorties.afficherMessage("Pas un choix.");
+                    EntreesSorties.afficherTitre("Pas un choix.");
                     break;
                 }
             }
