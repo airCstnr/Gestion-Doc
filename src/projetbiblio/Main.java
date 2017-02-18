@@ -19,10 +19,10 @@ public class Main {
                 do {
                     EntreesSorties.afficherMessage(" ========================================================");
                     EntreesSorties.afficherMessage("|            Selection Du fichier test:                  |");
-                    EntreesSorties.afficherMessage("| Fichier Vide :    1                                    |");
-                    EntreesSorties.afficherMessage("| Fichier Brouillon :   2                                |");
-                    EntreesSorties.afficherMessage("| Fichier de test(Ne pas le modifer) :     3             |");
-                    EntreesSorties.afficherMessage("| Quitter :         0                                    |");
+                    EntreesSorties.afficherMessage("| Fichier Vide :                          1              |");
+                    EntreesSorties.afficherMessage("| Fichier Brouillon :                     2              |");
+                    EntreesSorties.afficherMessage("| Fichier de test (Ne pas le modifer) :   3              |");
+                    EntreesSorties.afficherMessage("| Ficher par défaut (default.ser) :       0              |");
                     EntreesSorties.afficherMessage(" ========================================================");
                     menufich = EntreesSorties.lireEntier();
 
