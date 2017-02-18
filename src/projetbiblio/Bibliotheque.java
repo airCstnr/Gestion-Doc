@@ -48,14 +48,16 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Méthodes
     // -----------------------------------------------
-    /*
-    * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
-    * nom, prénom, date de naissance, adresse et numéro de téléphone.
-    * L'age doit être compris entre 3 et 110 ans
-    * Le lecteur est identifié par son numéro, si celui ci existe déjà dans le dictionnaire
-    * de bibliothèque, un message d'erreur est affiché.
-    * Une fois le nouveau lecteur créé, il est ajouté au dictionnaire de lecteur
-    * afin de garantir la cohérence des données.
+
+    /**
+     * Permet de créer un nouveau lecteur.
+     * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
+     * nom, prénom, date de naissance, adresse et numéro de téléphone.
+     * L'age doit être compris entre 3 et 110 ans
+     * Le lecteur est identifié par son numéro, si celui ci existe déjà dans le dictionnaire
+     * de bibliothèque, un message d'erreur est affiché.
+     * Une fois le nouveau lecteur créé, il est ajouté au dictionnaire de lecteur
+     * afin de garantir la cohérence des données.
      */
     public void nouveauLecteur() {
         Integer numLecteur = dernierLecteur();
@@ -99,17 +101,18 @@ public class Bibliotheque implements Serializable {
         return numLecteur;
     }
 
-    /*
-    * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
-    * un lecteur, par la saisie de son identifiant (numéro de lecteur).
-    * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
-    * renvoyé a l'utilisateur.
+    /**
+     * Permet d'afficher l'ensemble des informations relatives à un lecteur.
+     * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
+     * un lecteur, par la saisie de son identifiant (numéro de lecteur).
+     * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
+     * renvoyé a l'utilisateur.
      */
     public void consulterLecteur() {
-        Integer numLecteur = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
-        Lecteur L = getLecteur(numLecteur);
-        if (L != null) {
-            L.afficherLecteur();
+        Integer numLect = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
+        Lecteur l = getLecteur(numLect);
+        if (l != null) {
+            l.afficherLecteur();
         } else {
             EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");
         }
@@ -122,7 +125,7 @@ public class Bibliotheque implements Serializable {
     public void consulterListeLecteurs() {
         EntreesSorties.afficherTitre("Liste des lecteurs : ");
         for (Lecteur l : _dicoLecteur.values()) {
-            EntreesSorties.afficherMessage("Lecteur : " + l.getNumLecteur());
+            EntreesSorties.afficherMessage("Lecteur : " + l.getNumLecteur() + "\tNom : " + l.getNom() + "\tPrénom : " + l.getPrenom());
         }
     }
 
