@@ -7,7 +7,7 @@ import java.util.Iterator;
 // Classe de gestion de la Bibliotheque
 public class Bibliotheque implements Serializable {
 
-    private static final long serialVersionUID = 262L;
+    private static final long serialVersionUID = 262L; // paramètre utile (ou pas) pour la sérialisation
 
     // -----------------------------------------------
     //Attributs
@@ -17,13 +17,24 @@ public class Bibliotheque implements Serializable {
     * garantir l'unicité de ces derniers, et facilitent les recherches et créations.
      */
     private HashMap<Integer, Lecteur> _dicoLecteur;
+
+    /**
+     * Idem pour les oeuvres
+     */
     private HashMap<String, Oeuvre> _dicoOeuvres;
 
+    /**
+     * Numéro du dernier lecteur enregistré dans la base.
+     */
     private int numLecteur;
 
     // -----------------------------------------------
     //Constructeur
     // -----------------------------------------------
+    /**
+     * Initialise les dictionnaires de lecteurs et d'oeuvres. Initialise à 0 le
+     * numéro du dernier lecteur.
+     */
     public Bibliotheque() {
         this.setLecteurs(new HashMap<Integer, Lecteur>());
         this._dicoOeuvres = new HashMap<>();
@@ -33,7 +44,7 @@ public class Bibliotheque implements Serializable {
 
 // -----------------------------------------------
     // Public
-// -----------------------------------------------	
+// -----------------------------------------------
     // -----------------------------------------------
     // Méthodes
     // -----------------------------------------------
@@ -78,22 +89,25 @@ public class Bibliotheque implements Serializable {
 
     }
 
-    /*
-    * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
-    * un lecteur, par la saisie de son identifiant (numéro de lecteur).
-    * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
-    * renvoyé a l'utilisateur.
+    /**
+     * Dernier lecteur incrémente le numéro du dernier lecteur et le renvoie
+     *
+     * @return numéro du dernier lecteur incrémenté
      */
     public int dernierLecteur() {
         numLecteur++;
         return numLecteur;
     }
 
+    /*
+    * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
+    * un lecteur, par la saisie de son identifiant (numéro de lecteur).
+    * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
+    * renvoyé a l'utilisateur.
+     */
     public void consulterLecteur() {
         Integer numLecteur = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
-
         Lecteur L = getLecteur(numLecteur);
-
         if (L != null) {
             L.afficherLecteur();
         } else {
@@ -112,6 +126,10 @@ public class Bibliotheque implements Serializable {
         }
     }
 
+    /**
+     * Permet d'ajouter un exemplaire d'une oeuvre de numéro ISBN et de saisir
+     * sa date de réception.
+     */
     public void nouvelExemplaire() {
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
@@ -122,10 +140,21 @@ public class Bibliotheque implements Serializable {
         }
     }
 
-    public Oeuvre getOeuvre(String isbn) {
-        return _dicoOeuvres.get(isbn);
+    /**
+     * Retourne l'oeuvre de numéro ISBN
+     *
+     * @param numISBN
+     * @return oeuvre de numISBN
+     */
+    public Oeuvre getOeuvre(String numISBN) {
+        return _dicoOeuvres.get(numISBN);
     }
 
+    /**
+     * Permet de créer un nouvel ouvrage. Paramètres : numéro ISBN, titre,
+     * auteur, éditeur, date de réception, le public Prérequis : l'oeuvre
+     * n'existe pas encore, le public existe
+     */
     public void nouvelOuvrage() {
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
@@ -151,7 +180,7 @@ public class Bibliotheque implements Serializable {
                     break;
                 default:
                     // erreur
-                    EntreesSorties.afficherMessage("Le public saisi n'est pas correct !!!!! Erreur (dead).");
+                    EntreesSorties.afficherMessage("Erreur : le public saisi n'est pas correct.");
                     return;
             }
             o = new Oeuvre(nISBN, titre, editeur, dateP, auteur, pub);
@@ -205,6 +234,8 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Setters
     // -----------------------------------------------
+    
+    
     private void setLecteurs(HashMap<Integer, Lecteur> dicoLecteur) {
         _dicoLecteur = dicoLecteur;
     }
@@ -212,28 +243,32 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Méthodes
     // -----------------------------------------------
+    
     /*
-	 * La méthode getLecteur permet de rechercher dans la base de donnée de bibliotheque un objet 
-	 * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
+     * La méthode getLecteur permet de rechercher dans la base de donnée de bibliotheque un objet 
+     * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
      */
     private Lecteur getLecteur(Integer numLecteur) {
         return _dicoLecteur.get(numLecteur);
     }
 
     /*
-	 * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
+     * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
      */
     private void lierLecteur(Lecteur L, Integer numLecteur) {
         _dicoLecteur.put(numLecteur, L);
     }
 
+    /*
+     * La méthode lierOeuvre permet d'ajouter une Oeuvre a la base de donnée de bibliotheque.
+     */
     public void lierOeuvre(Oeuvre o, String numISBN) {
         this._dicoOeuvres.put(numISBN, o);
     }
 
     /*
-	 * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
-	 * pour eventuellement les relancer.
+     * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
+     * pour eventuellement les relancer.
      */
     private Iterator<Lecteur> lesLecteurs() {
         return _dicoLecteur.values().iterator();

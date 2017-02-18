@@ -4,7 +4,10 @@ import java.util.HashMap;
 
 public class Oeuvre implements Serializable{
     
+    // -----------------------------------------------
     // Attributs
+    // -----------------------------------------------
+    
     private String numISBN; // {unique}
     private String titre;
     private String nomEditeur;
@@ -15,7 +18,22 @@ public class Oeuvre implements Serializable{
     private EnumPublic pub;
     private HashMap<Integer, Exemplaire> exemplaires;
 
-    // constructeur
+    // -----------------------------------------------
+    // Constructeur
+    // -----------------------------------------------
+    
+    /**
+     * Permet de créer une nouvelle oeuvre de numéro ISBN.
+     * Il a un titre, un nom d'éditeur, un nom d'auteur,
+     * une date de parution qui doit être antrieure à la date actuelle,
+     * un pubic auquel elle est adressée.
+     * @param numISBN
+     * @param titre
+     * @param nomEditeur
+     * @param dateParution
+     * @param nomAuteur
+     * @param pub 
+     */
     public Oeuvre(String numISBN, String titre, String nomEditeur, GregorianCalendar dateParution, String nomAuteur, EnumPublic pub) {
         this.numISBN = numISBN;
         this.titre = titre;
@@ -28,7 +46,15 @@ public class Oeuvre implements Serializable{
         this.exemplaires = new HashMap<Integer, Exemplaire>();
     }
     
-    // méthodes publiques
+    // -----------------------------------------------
+    // Méthodes Publiques
+    // -----------------------------------------------
+    
+    /**
+     * Ajoute un exemplaire e de numéro numExemplaire à l'oeuvre
+     * @param e
+     * @param numExemplaire 
+     */
     public void setExemplaire(Exemplaire e, int numExemplaire){
         exemplaires.put(numExemplaire, e);
     }
@@ -88,7 +114,7 @@ public class Oeuvre implements Serializable{
     }
 
     /**
-     * Affiche pour chaque exemplaires son N°
+     * Affiche pour chaque exemplaires son numéro d'exemplaire
      */
     public void afficherExemplaire() {
         for (Exemplaire e : exemplaires.values()) {
