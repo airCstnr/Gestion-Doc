@@ -144,7 +144,7 @@ public class Bibliotheque implements Serializable {
     }
 
     /**
-     * Retourne l'oeuvre de numéro ISBN
+     * Retourne l'oeuvre de numéro ISBN.
      *
      * @param numISBN
      * @return oeuvre de numISBN
@@ -195,6 +195,7 @@ public class Bibliotheque implements Serializable {
 
     /**
      * Affiche la liste des oeuvres enregistrées dans la base.
+     * Pour chaque oeuvre de la base, consulterListeOuvrages affiche son titre et son numéro ISBN.
      */
     public void consulterListeOuvrages() {
         EntreesSorties.afficherTitre("Liste des Oeuvres : ");
@@ -204,7 +205,10 @@ public class Bibliotheque implements Serializable {
     }
 
     /**
-     * Affiche les détails d'un ouvrage
+     * Affiche les détails d'un ouvrage.
+     * 
+     * consulterOuvrage demande son numéro ISBN, puis affiche l'affichage réduit et l'affichage détaillé.
+     * Si l'oeuvre n'existe pas, il affiche un message d'erreur.
      */
     public void consulterOuvrage() {
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
@@ -218,7 +222,11 @@ public class Bibliotheque implements Serializable {
     }
 
     /**
-     * Affiche les détails des exemplaires d'un ouvrage
+     * Affiche les détails des exemplaires d'un ouvrage.
+     * 
+     * consulterExemplaireOuvrage demande le numéro ISBN d'un ouvrage,
+     * puis affiche l'affichage réduit de l'oeuvre et les exemplaires de l'ouvrage.
+     * Si l'oeuvre n'existe pas, il affiche un message d'erreur.
      */
     public void consulterExemplaireOuvrage() {
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
