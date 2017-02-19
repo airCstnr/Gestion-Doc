@@ -1,7 +1,4 @@
-package projetbiblio;
-
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Emprunt implements Serializable {

@@ -118,7 +118,7 @@ public class Oeuvre implements Serializable{
      */
     public void afficherExemplaire() {
         for (Exemplaire e : exemplaires.values()) {
-            e.afficher();
+            e.afficherNumExemplaire();
         }
     }
 
