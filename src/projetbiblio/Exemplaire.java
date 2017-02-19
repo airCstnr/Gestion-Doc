@@ -77,25 +77,19 @@ public class Exemplaire implements Serializable {
     public void afficheDetails() {
 
     }
-    
+
     // -----------------------------------------------
     // Setters
     // -----------------------------------------------
-
     /**
      * Permet de modifier l'emprunt.
-     * 
+     *
      * Donner null pour que l'exemplaire soit disponible.
-     * 
-     * @param emprunt 
+     *
+     * @param emprunt
      */
     public void setEmprunt(Emprunt emprunt) {
         this.emprunt = emprunt;
     }
-    
-    
-    
-    
-    
 
 }
