@@ -60,6 +60,7 @@ public class Lecteur implements Serializable {
     public String getTel() {
         return _tel;
     }
+
     // -----------------------------------------------
     // Methodes
     // -----------------------------------------------
@@ -96,11 +97,9 @@ public class Lecteur implements Serializable {
 // -----------------------------------------------
 // Private
 // -----------------------------------------------
-    
     // -----------------------------------------------
     //Setters
     // -----------------------------------------------
-    
     private void setNom(String nom) {
         this._nom = nom;
     }
