@@ -154,9 +154,9 @@ public class Bibliotheque implements Serializable {
     }
 
     /**
-     * Permet de créer un nouvel ouvrage. Paramètres : numéro ISBN, titre,
-     * auteur, éditeur, date de réception, le public Prérequis : l'oeuvre
-     * n'existe pas encore, le public existe
+     * Permet de créer un nouvel ouvrage.
+     * Paramètres : numéro ISBN, titre, auteur, éditeur, date de réception, le public
+     * Prérequis : l'oeuvre n'existe pas encore, le public existe
      */
     public void nouvelOuvrage() {
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
@@ -195,6 +195,7 @@ public class Bibliotheque implements Serializable {
 
     /**
      * Affiche la liste des oeuvres enregistrées dans la base.
+     * 
      * Pour chaque oeuvre de la base, consulterListeOuvrages affiche son titre et son numéro ISBN.
      */
     public void consulterListeOuvrages() {
@@ -237,6 +238,53 @@ public class Bibliotheque implements Serializable {
         } else {
             EntreesSorties.afficherMessage("L'oeuvre demandée n'existe pas.");
         }
+    }
+    
+    
+    /**
+     * Permet à un lecteur d'emprunter un exemplaire d'une oeuvre.
+     * 
+     * Demande le numero ISBN, le numéro d'exemplaire et le numéro de lecteur.
+     * Vérifie si l'oeuvre existe, si l'exemplaire de l'oeuvre existe, si l'exemplaire est empruntable
+     * et si il est disponible.
+     * Vérifie si le public de l'oeuvre est compatible avec le public du lecteur.
+     * Vérifie si le lecteur peut emprunter un nouvel exemplaire.
+     * 
+     * Si tout est vérifié, crée l'emprunt et le signale.
+     * Sinon affiche le message d'erreur adéquat et abandonne.
+     */
+    public void emprunterExemplaire() {
+        
+    }
+    
+    /**
+     * Permet de rendre un exemplaire d'une oeuvre qui a été empruntée par un lecteur.
+     * 
+     * Demande la saisie des détails de l'exemplaire, puis effectue les modifications 
+     * nécessaires sur l'emprunt, le lecteur et l'exemplaire.
+     */
+    public void rendreExemplaire() {
+                
+    }
+    
+    /**
+     * Permet d'afficher les emprunts d'un lecteur.
+     * 
+     * Demande le numéro de lecteur puis affiche l'ensemble de ses emprunts.
+     * Vérifie si le lecteur existe.
+     */
+    public void consulterEmpruntsLecteur() {
+        
+    }
+    
+    /**
+     * Permet d'afficher les lecteurs dont les emprunts ont dépassé la date de retour prévue.
+     * 
+     * Vérifie pour chaque lecteur s'il a des emprunts dont la date de retour dépasse la date courante.
+     * 
+     */
+    public void relancerLecteur() {
+        
     }
 
 // -----------------------------------------------

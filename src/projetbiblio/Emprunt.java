@@ -49,7 +49,8 @@ public class Emprunt implements Serializable {
      * Renvoie la date de retour attendue de l'exemaplire.
      *
      * ATTENTION : La date retournée est la date d'emprunt
-     *
+     * ATTENTION : Il faut trouver comment renvoyer une date + 8 jours
+     * 
      * @return dateRetour
      */
     public GregorianCalendar getDateRetour() {
