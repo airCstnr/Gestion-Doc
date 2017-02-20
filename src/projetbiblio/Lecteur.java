@@ -1,5 +1,6 @@
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -18,6 +19,7 @@ public class Lecteur implements Serializable {
     private GregorianCalendar _dateNaiss;
     private String _adresse;
     private String _tel;
+    private ArrayList<Emprunt> emprunts;
 
     // -----------------------------------------------
     //Constructeur
@@ -29,6 +31,7 @@ public class Lecteur implements Serializable {
         this.setDateNaiss(dateNaiss);
         this.setAdresse(adresse);
         this.setTel(tel);
+        this.emprunts = new ArrayList<>(); // la liste des emprunts est vide
     }
 
 // -----------------------------------------------
@@ -37,6 +40,48 @@ public class Lecteur implements Serializable {
     // -----------------------------------------------
     //Getters
     // -----------------------------------------------
+    /**
+     * Renvoie true si le lecteur a emprunté 5 exemplaires, false sinon
+     *
+     * @return
+     */
+    public boolean estSature() {
+        return (this.emprunts.size() == 5);
+    }
+
+    /**
+     * Renvoie le nom et le prénom du lecteur
+     *
+     * @return prenom nom
+     */
+    public String getNomComplet() {
+        return _prenom + " " + _nom.toUpperCase();
+    }
+
+    /**
+     * Renvoie le type de public auquel appartient le lecteur.
+     *
+     * Calcule en fonction de l'age du lecteur le public auquel il appartient.
+     *
+     * @return
+     */
+    public EnumPublic getPublic() {
+        return null;
+    }
+
+    /**
+     * Renvoie l'age du lecteur.
+     *
+     * Utilise la date de naissance du lecteur pour renvoyer son age. ATTENTION
+     * : L'age est déterminé uniquement par l'année de naissance, et non par son
+     * anniversaire.
+     *
+     * @return age
+     */
+    public int getAge() {
+        return 0;
+    }
+
     public String getNom() {
         return _nom;
     }
@@ -92,6 +137,24 @@ public class Lecteur implements Serializable {
             age = dateActuelle.get(GregorianCalendar.YEAR) - _dateNaiss.get(GregorianCalendar.YEAR) - 1;
         }
         return age;
+    }
+
+    /**
+     * Permet d'ajouter un emprunt au lecteur.
+     *
+     * @param emprunt
+     */
+    public void setEmprunt(Emprunt emprunt) {
+        this.emprunts.add(emprunt);
+    }
+
+    /**
+     * Permet d'enlever l'emprunt au lecteur.
+     *
+     * @param emprunt
+     */
+    public void deleteEmprunt(Emprunt emprunt) {
+        this.emprunts.remove(emprunt);
     }
 
 // -----------------------------------------------
