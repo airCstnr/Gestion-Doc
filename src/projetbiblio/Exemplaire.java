@@ -51,12 +51,20 @@ public class Exemplaire implements Serializable {
     }
 
     /**
-     * Renvoie l'emprunt de l'exemplaire s'il est emprunté, null sinon
+     * Renvoie l'emprunt de l'exemplaire s'il est emprunté, null sinon.
      *
      * @return emprunt
      */
     public Emprunt getEmprunt() {
         return emprunt;
+    }
+    
+    /**
+     * Renvoie true si l'exemplaire est empruntable, false sinon.
+     * @return empruntable
+     */
+    public boolean getEmpruntable() {
+        return empruntable;
     }
 
     // -----------------------------------------------
