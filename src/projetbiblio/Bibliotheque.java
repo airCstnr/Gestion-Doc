@@ -323,7 +323,7 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Méthodes
     // -----------------------------------------------
-    /*
+    /**
      * La méthode getLecteur permet de rechercher dans la base de donnée de bibliotheque un objet 
      * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
      */
@@ -331,21 +331,23 @@ public class Bibliotheque implements Serializable {
         return _dicoLecteur.get(numLecteur);
     }
 
-    /*
+    /**
      * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
      */
     private void lierLecteur(Lecteur L, Integer numLecteur) {
         _dicoLecteur.put(numLecteur, L);
     }
 
-    /*
+    /**
      * La méthode lierOeuvre permet d'ajouter une Oeuvre a la base de donnée de bibliotheque.
+     * @param o
+     * @param numISBN
      */
     public void lierOeuvre(Oeuvre o, String numISBN) {
         this._dicoOeuvres.put(numISBN, o);
     }
 
-    /*
+    /**
      * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
      * pour eventuellement les relancer.
      */
