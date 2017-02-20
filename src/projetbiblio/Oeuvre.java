@@ -1,13 +1,13 @@
+
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
-public class Oeuvre implements Serializable{
-    
+public class Oeuvre implements Serializable {
+
     // -----------------------------------------------
     // Attributs
     // -----------------------------------------------
-    
     private String numISBN; // {unique}
     private String titre;
     private String nomEditeur;
@@ -21,18 +21,17 @@ public class Oeuvre implements Serializable{
     // -----------------------------------------------
     // Constructeur
     // -----------------------------------------------
-    
     /**
-     * Permet de créer une nouvelle oeuvre de numéro ISBN.
-     * Il a un titre, un nom d'éditeur, un nom d'auteur,
-     * une date de parution qui doit être antrieure à la date actuelle,
-     * un pubic auquel elle est adressée.
+     * Permet de créer une nouvelle oeuvre de numéro ISBN. Il a un titre, un nom
+     * d'éditeur, un nom d'auteur, une date de parution qui doit être antrieure
+     * à la date actuelle, un pubic auquel elle est adressée.
+     *
      * @param numISBN
      * @param titre
      * @param nomEditeur
      * @param dateParution
      * @param nomAuteur
-     * @param pub 
+     * @param pub
      */
     public Oeuvre(String numISBN, String titre, String nomEditeur, GregorianCalendar dateParution, String nomAuteur, EnumPublic pub) {
         this.numISBN = numISBN;
@@ -45,17 +44,17 @@ public class Oeuvre implements Serializable{
         this.pub = pub;
         this.exemplaires = new HashMap<Integer, Exemplaire>();
     }
-    
+
     // -----------------------------------------------
     // Méthodes Publiques
     // -----------------------------------------------
-    
     /**
      * Ajoute un exemplaire e de numéro numExemplaire à l'oeuvre
+     *
      * @param e
-     * @param numExemplaire 
+     * @param numExemplaire
      */
-    public void setExemplaire(Exemplaire e, int numExemplaire){
+    public void setExemplaire(Exemplaire e, int numExemplaire) {
         exemplaires.put(numExemplaire, e);
     }
 
@@ -82,11 +81,16 @@ public class Oeuvre implements Serializable{
     public int getNombreExemplaires() {
         return nombreExemplaires;
     }
-    
+
+    public EnumPublic getPub() {
+        return pub;
+    }
+
     /**
      * Ajoute un exemplaire en appelant le constructeur d'exemplaire
+     *
      * @param dateReception
-     * @param empruntable 
+     * @param empruntable
      */
     public void ajoutExemplaire(GregorianCalendar dateReception, boolean empruntable) {
         int numExemplaire = this.dernierExemplaire++;
