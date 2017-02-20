@@ -144,28 +144,23 @@ public class MenuBiblio {
 
             switch (menuEmprunt) {
                 case 1: {
-                    //_bibliotheque.emprunterExemplaire();
-                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    _bibliotheque.emprunterExemplaire();
                     break;
                 }
                 case 2: {
-                    //_bibliotheque.rendreExemplaire();
-                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    _bibliotheque.rendreExemplaire();
                     break;
                 }
                 case 3: {
-                    //_bibliotheque.consulterEmpruntsLecteur();
-                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    _bibliotheque.consulterEmpruntsLecteur();
                     break;
                 }
                 case 4: {
-                    //_bibliotheque.relancerLecteur();
-                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    _bibliotheque.relancerLecteur();
                     break;
                 }
                 case 5: {
-                    //_bibliotheque.consulterListeEmprunts();
-                    EntreesSorties.afficherTitre("Pas encore développé (Raf <3)");
+                    _bibliotheque.consulterListeEmprunts();
                     break;
                 }
                 default: {

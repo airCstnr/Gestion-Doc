@@ -48,18 +48,18 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Méthodes
     // -----------------------------------------------
-
     /**
-     * Permet de créer un nouveau lecteur.
-     * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
-     * nom, prénom, date de naissance, adresse et numéro de téléphone.
-     * L'age doit être compris entre 3 et 110 ans
-     * Le lecteur est identifié par son numéro, si celui ci existe déjà dans le dictionnaire
-     * de bibliothèque, un message d'erreur est affiché.
-     * Une fois le nouveau lecteur créé, il est ajouté au dictionnaire de lecteur
-     * afin de garantir la cohérence des données.
+     * Permet de créer un nouveau lecteur. La méthode nouveauLecteur permet de
+     * créé un lecteur en demandant la saisie de son numéro nom, prénom, date de
+     * naissance, adresse et numéro de téléphone. L'age doit être compris entre
+     * 3 et 110 ans Le lecteur est identifié par son numéro, si celui ci existe
+     * déjà dans le dictionnaire de bibliothèque, un message d'erreur est
+     * affiché. Une fois le nouveau lecteur créé, il est ajouté au dictionnaire
+     * de lecteur afin de garantir la cohérence des données.
      */
     public void nouveauLecteur() {
+        EntreesSorties.afficherTitre("-- Nouveau lecteur --");
+
         Integer numLecteur = dernierLecteur();
 
         String nom = EntreesSorties.lireChaine("Entrez le nom :");
@@ -102,13 +102,14 @@ public class Bibliotheque implements Serializable {
     }
 
     /**
-     * Permet d'afficher l'ensemble des informations relatives à un lecteur.
-     * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
-     * un lecteur, par la saisie de son identifiant (numéro de lecteur).
-     * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
-     * renvoyé a l'utilisateur.
+     * Permet d'afficher l'ensemble des informations relatives à un lecteur. La
+     * méthode consulterLecteur permet d'afficher l'ensemble des informations
+     * relatives à un lecteur, par la saisie de son identifiant (numéro de
+     * lecteur). Si le numéro de lecteur n'est pas dans la base de données de
+     * bibliotheque un message d'erreur est renvoyé a l'utilisateur.
      */
     public void consulterLecteur() {
+        EntreesSorties.afficherTitre("-- Consulter lecteur --");
         Integer numLect = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
         Lecteur l = getLecteur(numLect);
         if (l != null) {
@@ -123,7 +124,7 @@ public class Bibliotheque implements Serializable {
      * lecteurs de la base.
      */
     public void consulterListeLecteurs() {
-        EntreesSorties.afficherTitre("Liste des lecteurs : ");
+        EntreesSorties.afficherTitre("-- Liste des lecteurs --");
         for (Lecteur l : _dicoLecteur.values()) {
             EntreesSorties.afficherMessage("Lecteur : " + l.getNumLecteur() + "\tNom : " + l.getNom() + "\tPrénom : " + l.getPrenom());
         }
@@ -134,6 +135,7 @@ public class Bibliotheque implements Serializable {
      * sa date de réception.
      */
     public void nouvelExemplaire() {
+        EntreesSorties.afficherTitre("-- Nouvel exemplaire --");
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
         if (o != null) {
@@ -154,11 +156,12 @@ public class Bibliotheque implements Serializable {
     }
 
     /**
-     * Permet de créer un nouvel ouvrage.
-     * Paramètres : numéro ISBN, titre, auteur, éditeur, date de réception, le public
-     * Prérequis : l'oeuvre n'existe pas encore, le public existe
+     * Permet de créer un nouvel ouvrage. Paramètres : numéro ISBN, titre,
+     * auteur, éditeur, date de réception, le public Prérequis : l'oeuvre
+     * n'existe pas encore, le public existe
      */
     public void nouvelOuvrage() {
+        EntreesSorties.afficherTitre("-- Nouvel ouvrage --");
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
         if (o == null) {
@@ -195,11 +198,12 @@ public class Bibliotheque implements Serializable {
 
     /**
      * Affiche la liste des oeuvres enregistrées dans la base.
-     * 
-     * Pour chaque oeuvre de la base, consulterListeOuvrages affiche son titre et son numéro ISBN.
+     *
+     * Pour chaque oeuvre de la base, consulterListeOuvrages affiche son titre
+     * et son numéro ISBN.
      */
     public void consulterListeOuvrages() {
-        EntreesSorties.afficherTitre("Liste des Oeuvres : ");
+        EntreesSorties.afficherTitre("-- Liste des oeuvres --");
         for (Oeuvre o : _dicoOeuvres.values()) {
             EntreesSorties.afficherMessage("Oeuvre : " + o.getTitre() + "\tN° ISBN : " + o.getNumISBN());
         }
@@ -207,11 +211,13 @@ public class Bibliotheque implements Serializable {
 
     /**
      * Affiche les détails d'un ouvrage.
-     * 
-     * consulterOuvrage demande son numéro ISBN, puis affiche l'affichage réduit et l'affichage détaillé.
-     * Si l'oeuvre n'existe pas, il affiche un message d'erreur.
+     *
+     * consulterOuvrage demande son numéro ISBN, puis affiche l'affichage réduit
+     * et l'affichage détaillé. Si l'oeuvre n'existe pas, il affiche un message
+     * d'erreur.
      */
     public void consulterOuvrage() {
+        EntreesSorties.afficherTitre("-- Consulter ouvrage --");
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
         if (o != null) {
@@ -224,12 +230,13 @@ public class Bibliotheque implements Serializable {
 
     /**
      * Affiche les détails des exemplaires d'un ouvrage.
-     * 
-     * consulterExemplaireOuvrage demande le numéro ISBN d'un ouvrage,
-     * puis affiche l'affichage réduit de l'oeuvre et les exemplaires de l'ouvrage.
+     *
+     * consulterExemplaireOuvrage demande le numéro ISBN d'un ouvrage, puis
+     * affiche l'affichage réduit de l'oeuvre et les exemplaires de l'ouvrage.
      * Si l'oeuvre n'existe pas, il affiche un message d'erreur.
      */
     public void consulterExemplaireOuvrage() {
+        EntreesSorties.afficherTitre("-- Consulter exemplaire --");
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
         if (o != null) {
@@ -239,52 +246,68 @@ public class Bibliotheque implements Serializable {
             EntreesSorties.afficherMessage("L'oeuvre demandée n'existe pas.");
         }
     }
-    
-    
+
     /**
      * Permet à un lecteur d'emprunter un exemplaire d'une oeuvre.
-     * 
+     *
      * Demande le numero ISBN, le numéro d'exemplaire et le numéro de lecteur.
-     * Vérifie si l'oeuvre existe, si l'exemplaire de l'oeuvre existe, si l'exemplaire est empruntable
-     * et si il est disponible.
-     * Vérifie si le public de l'oeuvre est compatible avec le public du lecteur.
-     * Vérifie si le lecteur peut emprunter un nouvel exemplaire.
-     * 
-     * Si tout est vérifié, crée l'emprunt et le signale.
-     * Sinon affiche le message d'erreur adéquat et abandonne.
+     * Vérifie si l'oeuvre existe, si l'exemplaire de l'oeuvre existe, si
+     * l'exemplaire est empruntable et si il est disponible. Vérifie si le
+     * public de l'oeuvre est compatible avec le public du lecteur. Vérifie si
+     * le lecteur peut emprunter un nouvel exemplaire.
+     *
+     * Si tout est vérifié, crée l'emprunt et le signale. Sinon affiche le
+     * message d'erreur adéquat et abandonne.
      */
     public void emprunterExemplaire() {
-        
+        EntreesSorties.afficherTitre("-- Emprunter exemplaire --");
+
     }
-    
+
     /**
-     * Permet de rendre un exemplaire d'une oeuvre qui a été empruntée par un lecteur.
-     * 
-     * Demande la saisie des détails de l'exemplaire, puis effectue les modifications 
-     * nécessaires sur l'emprunt, le lecteur et l'exemplaire.
+     * Permet de rendre un exemplaire d'une oeuvre qui a été empruntée par un
+     * lecteur.
+     *
+     * Demande la saisie des détails de l'exemplaire, puis effectue les
+     * modifications nécessaires sur l'emprunt, le lecteur et l'exemplaire.
      */
     public void rendreExemplaire() {
-                
+        EntreesSorties.afficherTitre("-- Rendre exemplaire --");
+
     }
-    
+
     /**
      * Permet d'afficher les emprunts d'un lecteur.
-     * 
+     *
      * Demande le numéro de lecteur puis affiche l'ensemble de ses emprunts.
      * Vérifie si le lecteur existe.
      */
     public void consulterEmpruntsLecteur() {
-        
+        EntreesSorties.afficherTitre("-- Consulter emprunts lecteur --");
+
     }
-    
+
     /**
-     * Permet d'afficher les lecteurs dont les emprunts ont dépassé la date de retour prévue.
-     * 
-     * Vérifie pour chaque lecteur s'il a des emprunts dont la date de retour dépasse la date courante.
-     * 
+     * Permet d'afficher les lecteurs dont les emprunts ont dépassé la date de
+     * retour prévue.
+     *
+     * Vérifie pour chaque lecteur s'il a des emprunts dont la date de retour
+     * dépasse la date courante.
+     *
      */
     public void relancerLecteur() {
-        
+        EntreesSorties.afficherTitre("-- Relancer lecteur --");
+
+    }
+
+    /**
+     * Permet d'afficher l'ensemble de tous les emprunts des lecteurs.
+     *
+     * Recherche pour chaque lecteur s'il a des emprunts et les affiche.
+     */
+    public void consulterListeEmprunts() {
+        EntreesSorties.afficherTitre("-- Liste emprunts --");
+
     }
 
 // -----------------------------------------------
@@ -293,8 +316,6 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Setters
     // -----------------------------------------------
-    
-    
     private void setLecteurs(HashMap<Integer, Lecteur> dicoLecteur) {
         _dicoLecteur = dicoLecteur;
     }
@@ -302,7 +323,6 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Méthodes
     // -----------------------------------------------
-    
     /*
      * La méthode getLecteur permet de rechercher dans la base de donnée de bibliotheque un objet 
      * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
