@@ -36,7 +36,7 @@ public class Bibliotheque implements Serializable {
      * numéro du dernier lecteur.
      */
     public Bibliotheque() {
-        this.setLecteurs(new HashMap<Integer, Lecteur>());
+        this.setLecteurs(new HashMap<>());
         this._dicoOeuvres = new HashMap<>();
         this.numLecteur = 0;
 
@@ -149,6 +149,7 @@ public class Bibliotheque implements Serializable {
      * Retourne l'oeuvre de numéro ISBN.
      *
      * @param numISBN
+     *
      * @return oeuvre de numISBN
      */
     public Oeuvre getOeuvre(String numISBN) {
@@ -261,7 +262,27 @@ public class Bibliotheque implements Serializable {
      */
     public void emprunterExemplaire() {
         EntreesSorties.afficherTitre("-- Emprunter exemplaire --");
-
+        String isbn = EntreesSorties.lireChaine("N° ISBN : ");
+        Oeuvre oeuvre = _dicoOeuvres.get(isbn);
+        if (oeuvre == null) {
+            EntreesSorties.afficherMessage("L'oeuvre de n°ISBN " + isbn + " n'existe pas.");
+            return;
+        }
+        int numEx = EntreesSorties.lireEntier("Numéro d'exemplaire : ");
+        Exemplaire exemplaire = oeuvre.getExemplaire(numEx);
+        if (exemplaire == null) {
+            EntreesSorties.afficherMessage("L'exemplaire de numéro " + numEx + " n'existe pas.");
+            return;
+        }
+        int numLect = EntreesSorties.lireEntier("Numéro de lecteur : ");
+        Lecteur lecteur = _dicoLecteur.get(numLect);
+        if (lecteur == null) {
+            EntreesSorties.afficherMessage("Le lecteur de numéro " + numLect + " n'existe pas.");
+            return;
+        }
+        // vérifications !!
+        new Emprunt(new GregorianCalendar(), lecteur, exemplaire);
+        EntreesSorties.afficherMessage("Création de l'emprunt réussie.");
     }
 
     /**
@@ -324,7 +345,7 @@ public class Bibliotheque implements Serializable {
     // Méthodes
     // -----------------------------------------------
     /**
-     * La méthode getLecteur permet de rechercher dans la base de donnée de bibliotheque un objet 
+     * La méthode getLecteur permet de rechercher dans la base de donnée de bibliotheque un objet
      * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
      */
     private Lecteur getLecteur(Integer numLecteur) {
@@ -340,6 +361,7 @@ public class Bibliotheque implements Serializable {
 
     /**
      * La méthode lierOeuvre permet d'ajouter une Oeuvre a la base de donnée de bibliotheque.
+     *
      * @param o
      * @param numISBN
      */

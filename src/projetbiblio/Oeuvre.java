@@ -45,19 +45,12 @@ public class Oeuvre implements Serializable {
         this.exemplaires = new HashMap<Integer, Exemplaire>();
     }
 
+// -----------------------------------------------
+// Public
+// -----------------------------------------------
     // -----------------------------------------------
-    // Méthodes Publiques
+    // Getters
     // -----------------------------------------------
-    /**
-     * Ajoute un exemplaire e de numéro numExemplaire à l'oeuvre
-     *
-     * @param e
-     * @param numExemplaire
-     */
-    public void setExemplaire(Exemplaire e, int numExemplaire) {
-        exemplaires.put(numExemplaire, e);
-    }
-
     public String getNumISBN() {
         return numISBN;
     }
@@ -84,6 +77,30 @@ public class Oeuvre implements Serializable {
 
     public EnumPublic getPub() {
         return pub;
+    }
+
+    /**
+     * Retourne l'exemplaire de numEx, null sinon.
+     *
+     * @param numEx
+     *
+     * @return Exemplaire ou null
+     */
+    public Exemplaire getExemplaire(int numEx) {
+        return exemplaires.get(numEx);
+    }
+
+    // -----------------------------------------------
+    // Méthodes Publiques
+    // -----------------------------------------------
+    /**
+     * Ajoute un exemplaire e de numéro numExemplaire à l'oeuvre
+     *
+     * @param e
+     * @param numExemplaire
+     */
+    public void setExemplaire(Exemplaire e, int numExemplaire) {
+        exemplaires.put(numExemplaire, e);
     }
 
     /**
