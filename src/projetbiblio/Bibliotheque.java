@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 // Classe de gestion de la Bibliotheque
 public class Bibliotheque implements Serializable {
-    
+
     private static final long serialVersionUID = 262L; // paramètre utile (ou pas) pour la sérialisation
 
     // -----------------------------------------------
@@ -39,7 +39,7 @@ public class Bibliotheque implements Serializable {
         this.setLecteurs(new HashMap<>());
         this._dicoOeuvres = new HashMap<>();
         this.numLecteur = 0;
-        
+
     }
 
 // -----------------------------------------------
@@ -59,9 +59,9 @@ public class Bibliotheque implements Serializable {
      */
     public void nouveauLecteur() {
         EntreesSorties.afficherTitre("-- Nouveau lecteur --");
-        
+
         Integer numLecteur = dernierLecteur();
-        
+
         String nom = EntreesSorties.lireChaine("Entrez le nom :");
         String prenom = EntreesSorties.lireChaine("Entrez le prenom :");
         Integer age;
@@ -84,11 +84,11 @@ public class Bibliotheque implements Serializable {
         String adresse = EntreesSorties.lireChaine("Entrez l'adresse :");
         String tel = EntreesSorties.lireChaine("Entrez le numero de telephone :");
         EntreesSorties.afficherMessage("Fin de saisie");
-        
+
         Lecteur L = new Lecteur(nom, prenom, numLecteur, dateNaiss, adresse, tel, age);
         lierLecteur(L, numLecteur);
         System.out.println("N° de Lecteur attribué : " + numLecteur);
-        
+
     }
 
     /**
@@ -281,11 +281,11 @@ public class Bibliotheque implements Serializable {
             return;
         }
         // vérifications !!
-        
+
         Emprunt emprunt = new Emprunt(new GregorianCalendar(), lecteur, exemplaire);
         lecteur.setEmprunt(emprunt);
         exemplaire.setEmprunt(emprunt);
-        EntreesSorties.afficherMessage("Création de l'emprunt réussie.");
+        EntreesSorties.afficherMessage("Création de l'emprunt réussie. L'exemplaire est emprunté!");
     }
 
     /**
@@ -297,7 +297,21 @@ public class Bibliotheque implements Serializable {
      */
     public void rendreExemplaire() {
         EntreesSorties.afficherTitre("-- Rendre exemplaire --");
-        
+        String isbn = EntreesSorties.lireChaine("N° ISBN : ");
+        Oeuvre oeuvre = _dicoOeuvres.get(isbn);
+        if (oeuvre == null) {
+            EntreesSorties.afficherMessage("L'oeuvre de n°ISBN " + isbn + " n'existe pas.");
+            return;
+        }
+        int numEx = EntreesSorties.lireEntier("Numéro d'exemplaire : ");
+        Exemplaire exemplaire = oeuvre.getExemplaire(numEx);
+        if (exemplaire == null) {
+            EntreesSorties.afficherMessage("L'exemplaire de numéro " + numEx + " n'existe pas.");
+            return;
+        }
+        Emprunt emprunt = exemplaire.getEmprunt();
+        emprunt.deleteEmprunt();
+        EntreesSorties.afficherMessage("L'exemplaire est rendu!");
     }
 
     /**
@@ -308,7 +322,7 @@ public class Bibliotheque implements Serializable {
      */
     public void consulterEmpruntsLecteur() {
         EntreesSorties.afficherTitre("-- Consulter emprunts lecteur --");
-        
+
     }
 
     /**
@@ -321,7 +335,7 @@ public class Bibliotheque implements Serializable {
      */
     public void relancerLecteur() {
         EntreesSorties.afficherTitre("-- Relancer lecteur --");
-        
+
     }
 
     /**
@@ -331,7 +345,7 @@ public class Bibliotheque implements Serializable {
      */
     public void consulterListeEmprunts() {
         EntreesSorties.afficherTitre("-- Liste emprunts --");
-        
+
     }
 
 // -----------------------------------------------
@@ -379,5 +393,5 @@ public class Bibliotheque implements Serializable {
     private Iterator<Lecteur> lesLecteurs() {
         return _dicoLecteur.values().iterator();
     }
-    
+
 }
