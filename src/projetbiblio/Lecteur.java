@@ -2,8 +2,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.HashSet;
-import java.util.Iterator;
 
 // Classe de gestion de Lecteur
 public class Lecteur implements Serializable {
@@ -47,6 +45,24 @@ public class Lecteur implements Serializable {
      */
     public boolean estSature() {
         return (this.emprunts.size() == 5);
+    }
+
+    /**
+     * Renoive le nombre d'emprunts actuels du lecteur.
+     *
+     * @return nbEmprunts
+     */
+    public int getNbEmprunts() {
+        return this.emprunts.size();
+    }
+
+    /**
+     * Renvoie la liste des emprunts.
+     *
+     * @return emprunts
+     */
+    public ArrayList<Emprunt> getEmprunts() {
+        return emprunts;
     }
 
     /**

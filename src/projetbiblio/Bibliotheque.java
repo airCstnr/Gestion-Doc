@@ -241,7 +241,7 @@ public class Bibliotheque implements Serializable {
         String nISBN = EntreesSorties.lireChaine("N° ISBN : ");
         Oeuvre o = getOeuvre(nISBN);
         if (o != null) {
-            o.afficherReduit();
+            //o.afficherReduit();
             o.afficherExemplaire();
         } else {
             EntreesSorties.afficherMessage("L'oeuvre demandée n'existe pas.");
@@ -345,6 +345,17 @@ public class Bibliotheque implements Serializable {
      */
     public void consulterListeEmprunts() {
         EntreesSorties.afficherTitre("-- Liste emprunts --");
+        for (Lecteur l : _dicoLecteur.values()) {
+            if (l.getNbEmprunts()!=0) {
+                EntreesSorties.afficherMessage("-- Lecteur : " + l.getNomComplet());
+                for (Emprunt e : l.getEmprunts()) {
+                    EntreesSorties.afficherMessage("Exemplaire : ");
+                    e.getExemplaire().afficheDetails();
+                    
+                }
+                
+            }
+        }
 
     }
 

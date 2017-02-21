@@ -83,7 +83,9 @@ public class Exemplaire implements Serializable {
      * Affiche la date de réception, s'il est empruntable et s'il est emprunté.
      */
     public void afficheDetails() {
-
+        EntreesSorties.afficherMessage("Date de réception : " + dateReception.toString());
+        EntreesSorties.afficherMessage("Empruntable : " + (empruntable?"oui":"non"));
+        EntreesSorties.afficherMessage("Emprunté : " + (emprunt!=null?"oui":"non"));
     }
 
     // -----------------------------------------------

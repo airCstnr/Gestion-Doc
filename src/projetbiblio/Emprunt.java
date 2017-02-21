@@ -1,3 +1,4 @@
+
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
@@ -47,7 +48,7 @@ public class Emprunt implements Serializable {
      *
      * ATTENTION : La date retournée est la date d'emprunt
      * ATTENTION : Il faut trouver comment renvoyer une date + 8 jours
-     * 
+     *
      * @return dateRetour
      */
     public GregorianCalendar getDateRetour() {
@@ -67,7 +68,7 @@ public class Emprunt implements Serializable {
         this.getLecteur().deleteEmprunt(this);
         this.getExemplaire().setEmprunt(null);
         this.setExemplaire(null);
-        this.setLecteur(null);        
+        this.setLecteur(null);
     }
 
 // -----------------------------------------------
