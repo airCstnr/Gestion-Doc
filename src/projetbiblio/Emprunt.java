@@ -64,7 +64,10 @@ public class Emprunt implements Serializable {
      * l'emprunt et met à NULL lecteur et exemaplire.
      */
     public void deleteEmprunt() {
-        System.out.println("Pas encore développé!");
+        this.getLecteur().deleteEmprunt(this);
+        this.getExemplaire().setEmprunt(null);
+        this.setExemplaire(null);
+        this.setLecteur(null);        
     }
 
 // -----------------------------------------------
