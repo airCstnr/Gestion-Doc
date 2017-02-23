@@ -77,7 +77,9 @@ public class Emprunt implements Serializable {
      */
     @Override
     public String toString() {
-        return lecteur.getNumLecteur().toString() + " " + lecteur.getNomComplet() + "\t" + exemplaire.getOeuvre().getNumISBN() + " " + exemplaire.getOeuvre().getTitre() + " " + exemplaire.getNumExemplaire() + "\t" + this.dateEmprunt.toString() + " " + this.getDateRetour();
+        return lecteur.getNumLecteur().toString() + " " + lecteur.getNomComplet() + "\t" 
+                + exemplaire.getOeuvre().getNumISBN()+ " " + exemplaire.getOeuvre().getTitre() + " " + exemplaire.getNumExemplaire() + "\t" 
+                + EntreesSorties.ecrireDate(dateEmprunt) + " " + EntreesSorties.ecrireDate(getDateRetour());
     }
     
     

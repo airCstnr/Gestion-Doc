@@ -345,10 +345,11 @@ public class Bibliotheque implements Serializable {
      */
     public void consulterListeEmprunts() {
         EntreesSorties.afficherTitre("-- Liste emprunts --");
+        EntreesSorties.afficherMessage("Num Lect / Nom / Prénom / N°ISBN / Titre / Num Ex / Date d'emprunt / Date de retour ");
         for (Lecteur l : _dicoLecteur.values()) {
             if (l.getNbEmprunts() != 0) {
                 for (Emprunt e : l.getEmprunts()) {
-                    e.toString();
+                    EntreesSorties.afficherMessage(e.toString());
                 }
             }
         }
