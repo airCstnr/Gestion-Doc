@@ -58,13 +58,18 @@ public class Exemplaire implements Serializable {
     public Emprunt getEmprunt() {
         return emprunt;
     }
-    
+
     /**
      * Renvoie true si l'exemplaire est empruntable, false sinon.
+     *
      * @return empruntable
      */
     public boolean getEmpruntable() {
         return empruntable;
+    }
+
+    public Oeuvre getOeuvre() {
+        return oeuvre;
     }
 
     // -----------------------------------------------
@@ -84,8 +89,8 @@ public class Exemplaire implements Serializable {
      */
     public void afficheDetails() {
         EntreesSorties.afficherMessage("Date de réception : " + dateReception.toString());
-        EntreesSorties.afficherMessage("Empruntable : " + (empruntable?"oui":"non"));
-        EntreesSorties.afficherMessage("Emprunté : " + (emprunt!=null?"oui":"non"));
+        EntreesSorties.afficherMessage("Empruntable : " + (empruntable ? "oui" : "non"));
+        EntreesSorties.afficherMessage("Emprunté : " + (emprunt != null ? "oui" : "non"));
     }
 
     // -----------------------------------------------

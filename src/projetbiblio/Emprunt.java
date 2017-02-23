@@ -71,6 +71,17 @@ public class Emprunt implements Serializable {
         this.setLecteur(null);
     }
 
+    /**
+     * Affiche les détails du lecteur, de l'exemplaire et de l'emprunt
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return lecteur.getNumLecteur().toString() + " " + lecteur.getNomComplet() + "\t" + exemplaire.getOeuvre().getNumISBN() + " " + exemplaire.getOeuvre().getTitre() + " " + exemplaire.getNumExemplaire() + "\t" + this.dateEmprunt.toString() + " " + this.getDateRetour();
+    }
+    
+    
+
 // -----------------------------------------------
 // Private
 // -----------------------------------------------

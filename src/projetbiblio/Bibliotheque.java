@@ -346,17 +346,12 @@ public class Bibliotheque implements Serializable {
     public void consulterListeEmprunts() {
         EntreesSorties.afficherTitre("-- Liste emprunts --");
         for (Lecteur l : _dicoLecteur.values()) {
-            if (l.getNbEmprunts()!=0) {
-                EntreesSorties.afficherMessage("-- Lecteur : " + l.getNomComplet());
+            if (l.getNbEmprunts() != 0) {
                 for (Emprunt e : l.getEmprunts()) {
-                    EntreesSorties.afficherMessage("Exemplaire : ");
-                    e.getExemplaire().afficheDetails();
-                    
+                    e.toString();
                 }
-                
             }
         }
-
     }
 
 // -----------------------------------------------
