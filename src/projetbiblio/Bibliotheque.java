@@ -340,7 +340,17 @@ public class Bibliotheque implements Serializable {
      */
     public void consulterEmpruntsLecteur() {
         EntreesSorties.afficherTitre("-- Consulter emprunts lecteur --");
-
+        int numLect = EntreesSorties.lireEntier("Numéro de lecteur : ");
+        Lecteur lecteur = _dicoLecteur.get(numLect);
+        if (lecteur == null) {
+            EntreesSorties.afficherMessage("Le lecteur de numéro " + numLect + " n'existe pas.");
+            return;
+        }
+        if (lecteur.getNbEmprunts() != 0) {
+            for (Emprunt e : lecteur.getEmprunts()) {
+                EntreesSorties.afficherMessage(e.toString());
+            }
+        }
     }
 
     /**
@@ -353,7 +363,16 @@ public class Bibliotheque implements Serializable {
      */
     public void relancerLecteur() {
         EntreesSorties.afficherTitre("-- Relancer lecteur --");
-
+        EntreesSorties.afficherMessage("Num Lect / Nom / Prénom / N°ISBN / Titre / Num Ex / Date d'emprunt / Date de retour ");
+        for (Lecteur l : _dicoLecteur.values()) {
+            if (l.getNbEmprunts() != 0) {
+                for (Emprunt e : l.getEmprunts()) {
+                    if (e.getDateRetour().before(new GregorianCalendar())) { // ATTENTION : La date de relance est de 15 jours, pas juste 8 jours!! O.o
+                        EntreesSorties.afficherMessage(e.toString());
+                    }
+                }
+            }
+        }
     }
 
     /**
