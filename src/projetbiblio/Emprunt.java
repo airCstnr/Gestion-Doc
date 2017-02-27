@@ -52,7 +52,9 @@ public class Emprunt implements Serializable {
      * @return dateRetour
      */
     public GregorianCalendar getDateRetour() {
-        return dateEmprunt;
+        GregorianCalendar dateRetour = (GregorianCalendar)dateEmprunt.clone();
+        dateRetour.add(GregorianCalendar.DAY_OF_MONTH, 8);
+        return dateRetour;
     }
 
     // -----------------------------------------------
