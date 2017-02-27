@@ -81,9 +81,9 @@ public class Lecteur implements Serializable {
      *
      * @return
      */
-    public EnumPublic getPublic() {
+    /*public EnumPublic getPublic() {
         return null;
-    }
+    }*/
 
     /**
      * Renvoie l'age du lecteur.

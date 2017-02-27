@@ -280,8 +280,26 @@ public class Bibliotheque implements Serializable {
             EntreesSorties.afficherMessage("Le lecteur de numéro " + numLect + " n'existe pas.");
             return;
         }
-        // vérifications !!
-
+        
+        // vérifications
+        if (!exemplaire.getEmpruntable()) {
+            EntreesSorties.afficherMessage("L'exemplaire n'est pas empruntable.");
+            return;
+        }
+        if (exemplaire.getEmprunt()!=null) {
+            EntreesSorties.afficherMessage("L'exemplaire n'est pas disponible.");
+            return;
+        }
+        if (!compatibilitePublic(oeuvre, lecteur)) {
+            EntreesSorties.afficherMessage("Le public de l'oeuvre n'est pas adapté à l'age du lecteur.");
+            return;
+        }
+        if (lecteur.estSature()) {
+            EntreesSorties.afficherMessage("Le lecteur ne peut pas emprunter un nouvel exemplaire.");
+            return;
+        }
+        
+        // création de l'emprunt
         Emprunt emprunt = new Emprunt(new GregorianCalendar(), lecteur, exemplaire);
         lecteur.setEmprunt(emprunt);
         exemplaire.setEmprunt(emprunt);
@@ -397,8 +415,27 @@ public class Bibliotheque implements Serializable {
      * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
      * pour eventuellement les relancer.
      */
-    private Iterator<Lecteur> lesLecteurs() {
+    /*private Iterator<Lecteur> lesLecteurs() {
         return _dicoLecteur.values().iterator();
+    }*/
+    
+    /**
+     * Renvoie true si l'age du lecteur est compatible avec le public de l'oeuvre, false sinon.
+     * @param o
+     * @param l
+     * @return 
+     */
+    private boolean compatibilitePublic(Oeuvre o, Lecteur l) {
+        if (o.getPub()==EnumPublic.ENFANT) {
+            return true;
+        }
+        if (o.getPub()==EnumPublic.ADOLESCENT && l.getAge()>10) {
+            return true;
+        }
+        if (o.getPub()==EnumPublic.ADULTE && l.getAge()>16) {
+            return true;
+        }
+        return false;
     }
 
 }
