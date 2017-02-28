@@ -47,7 +47,7 @@ public class Oeuvre implements Serializable {
         this.dernierExemplaire = 1; // cet atttribut sera appelé quand on crée un nouvel exemplaire
         this.nombreExemplaires = 0;
         this.pub = pub;
-        this.exemplaires = new HashMap<Integer, Exemplaire>();
+        this.exemplaires = new HashMap<>();
     }
 
 // -----------------------------------------------
@@ -159,7 +159,6 @@ public class Oeuvre implements Serializable {
      * Affiche le titre et l'ISBN de l'oeuvre
      */
     public void afficherReduit() {
-        
         EntreesSorties.afficherMessage("--- Titre : " + this.getTitre() + " ---");
         EntreesSorties.afficherMessage("N°ISBN : " + this.getNumISBN());
     }
@@ -172,7 +171,6 @@ public class Oeuvre implements Serializable {
         EntreesSorties.afficherMessage("Editeur : " + this.getNomEditeur());
         EntreesSorties.afficherMessage("Date de Parution : " + EntreesSorties.ecrireDate(this.getDateParution()));
         EntreesSorties.afficherMessage("Public : " + this.getPub());
-        EntreesSorties.afficherMessage("------------------------ ");
     }
 
     /**
@@ -180,11 +178,11 @@ public class Oeuvre implements Serializable {
      */
     public void afficherExemplaire() {
         for (Exemplaire e : exemplaires.values()) {
-            EntreesSorties.afficherMessage("------------------------- ");
+            EntreesSorties.afficherMessage("-------------------------");
             e.afficherNumExemplaire();
             e.afficheDetails();
+            EntreesSorties.afficherMessage("-------------------------");
         }
-        EntreesSorties.afficherMessage("------------------------- ");
     }
 
 }
