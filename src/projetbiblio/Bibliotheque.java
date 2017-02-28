@@ -4,7 +4,12 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
-// Classe de gestion de la Bibliotheque
+
+/**
+ * Classe de gestion de la Bibliotheque.
+ * Interface de Gestion Documentaire.
+ * @author castanir
+ */
 public class Bibliotheque implements Serializable {
 
     private static final long serialVersionUID = 262L; // paramètre utile (ou pas) pour la sérialisation
@@ -280,13 +285,13 @@ public class Bibliotheque implements Serializable {
             EntreesSorties.afficherMessage("Le lecteur de numéro " + numLect + " n'existe pas.");
             return;
         }
-        
+
         // vérifications
         if (!exemplaire.getEmpruntable()) {
             EntreesSorties.afficherMessage("L'exemplaire n'est pas empruntable.");
             return;
         }
-        if (exemplaire.getEmprunt()!=null) {
+        if (exemplaire.getEmprunt() != null) {
             EntreesSorties.afficherMessage("L'exemplaire n'est pas disponible.");
             return;
         }
@@ -298,7 +303,7 @@ public class Bibliotheque implements Serializable {
             EntreesSorties.afficherMessage("Le lecteur ne peut pas emprunter un nouvel exemplaire.");
             return;
         }
-        
+
         // création de l'emprunt
         Emprunt emprunt = new Emprunt(new GregorianCalendar(), lecteur, exemplaire);
         lecteur.setEmprunt(emprunt);
@@ -406,22 +411,25 @@ public class Bibliotheque implements Serializable {
     // Méthodes
     // -----------------------------------------------
     /**
-     * La méthode getLecteur permet de rechercher dans la base de donnée de bibliotheque un objet
-     * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
+     * La méthode getLecteur permet de rechercher dans la base de donnée de
+     * bibliotheque un objet lecteur identifié par son numéro, et de renvoyer
+     * l'objet. (ou la donnée null s'il n'est pas trouvé)
      */
     private Lecteur getLecteur(Integer numLecteur) {
         return _dicoLecteur.get(numLecteur);
     }
 
     /**
-     * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
+     * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de
+     * bibliotheque.
      */
     private void lierLecteur(Lecteur L, Integer numLecteur) {
         _dicoLecteur.put(numLecteur, L);
     }
 
     /**
-     * La méthode lierOeuvre permet d'ajouter une Oeuvre a la base de donnée de bibliotheque.
+     * La méthode lierOeuvre permet d'ajouter une Oeuvre a la base de donnée de
+     * bibliotheque.
      *
      * @param o
      * @param numISBN
@@ -431,27 +439,28 @@ public class Bibliotheque implements Serializable {
     }
 
     /**
-     * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
-     * pour eventuellement les relancer.
+     * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans
+     * le but de les parcourir pour eventuellement les relancer.
      */
     /*private Iterator<Lecteur> lesLecteurs() {
         return _dicoLecteur.values().iterator();
     }*/
-    
     /**
-     * Renvoie true si l'age du lecteur est compatible avec le public de l'oeuvre, false sinon.
+     * Renvoie true si l'age du lecteur est compatible avec le public de
+     * l'oeuvre, false sinon.
+     *
      * @param o
      * @param l
-     * @return 
+     * @return
      */
     private boolean compatibilitePublic(Oeuvre o, Lecteur l) {
-        if (o.getPub()==EnumPublic.ENFANT) {
+        if (o.getPub() == EnumPublic.ENFANT) {
             return true;
         }
-        if (o.getPub()==EnumPublic.ADOLESCENT && l.getAge()>10) {
+        if (o.getPub() == EnumPublic.ADOLESCENT && l.getAge() > 10) {
             return true;
         }
-        if (o.getPub()==EnumPublic.ADULTE && l.getAge()>16) {
+        if (o.getPub() == EnumPublic.ADULTE && l.getAge() > 16) {
             return true;
         }
         return false;

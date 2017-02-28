@@ -3,6 +3,11 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
+/**
+ * Classe d'Oeuvre de la Bibliothèque
+ *
+ * @author castanir
+ */
 public class Oeuvre implements Serializable {
 
     // -----------------------------------------------
@@ -51,26 +56,55 @@ public class Oeuvre implements Serializable {
     // -----------------------------------------------
     // Getters
     // -----------------------------------------------
+    /**
+     * Renvoie le numéro ISBN.
+     *
+     * @return numISBN
+     */
     public String getNumISBN() {
         return numISBN;
     }
 
+    /**
+     * Renvoie le titre.
+     *
+     * @return titre
+     */
     public String getTitre() {
         return titre;
     }
 
+    /**
+     * Renvoie le nume de l'éditeur.
+     *
+     * @return numEditeur
+     */
     public String getNomEditeur() {
         return nomEditeur;
     }
 
+    /**
+     * Renvoie la date de parution.
+     *
+     * @return dateParution
+     */
     public GregorianCalendar getDateParution() {
         return dateParution;
     }
 
+    /**
+     * Renvoie le nom de l'auteur
+     * 
+     * @return nomAuteur
+     */
     public String getNomAuteur() {
         return nomAuteur;
     }
 
+    /**
+     * Renvoie le nombre d'exemplaires présents dans la bibliothèque.
+     * @return 
+     */
     public int getNombreExemplaires() {
         return nombreExemplaires;
     }
