@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 
 /**
  * Classe de gestion de Lecteur.
+ *
  * @author castanir
  */
 public class Lecteur implements Serializable {
@@ -27,11 +28,10 @@ public class Lecteur implements Serializable {
     // -----------------------------------------------
     /**
      * Constructeur de Lecteur.
-     * 
+     *
      * Nécessite d'avoir son nom, prénom, date de naissance, adresse, tel.
-     * 
-     * 
-     * 
+     * Il faut aussi fournir son numéro de lecteur.
+     *
      * @param nom
      * @param prenom
      * @param numLecteur
@@ -58,7 +58,7 @@ public class Lecteur implements Serializable {
     /**
      * Renvoie true si le lecteur a emprunté 5 exemplaires, false sinon
      *
-     * @return
+     * @return lecteur saturé
      */
     public boolean estSature() {
         return (this.emprunts.size() == 5);
@@ -101,42 +101,65 @@ public class Lecteur implements Serializable {
     /*public EnumPublic getPublic() {
         return null;
     }*/
-
     /**
      * Renvoie l'age du lecteur.
-     *
-     * Utilise la date de naissance du lecteur pour renvoyer son age. ATTENTION
-     * : L'age est déterminé uniquement par l'année de naissance, et non par son
-     * anniversaire.
-     * 
-     * ATTENTION : à faire!!!
      *
      * @return age
      */
     public int getAge() {
-        return 0;
+        return this.calculAge();
     }
 
+    /**
+     * Renvoie le nom
+     *
+     * @return nom
+     */
     public String getNom() {
         return _nom;
     }
 
+    /**
+     * Renvoie le prénom
+     *
+     * @return prenom
+     */
     public String getPrenom() {
         return _prenom;
     }
 
+    /**
+     * Renvoie le numéro de lecteur
+     *
+     * @return numLecteur
+     */
     public Integer getNumLecteur() {
         return _numLecteur;
     }
 
+    /**
+     * Renvoie la daté de naissance
+     *
+     * @return dateNaiss
+     */
     public GregorianCalendar getDateNaiss() {
         return _dateNaiss;
     }
 
+    /**
+     * Renvoie l'adresse
+     *
+     * @return adresse
+     */
     public String getAdresse() {
         return _adresse;
     }
 
+    /**
+     * Renvoie le numéro de téléphone
+     *
+     * @return tel
+     */
     public String getTel() {
         return _tel;
     }
@@ -144,34 +167,19 @@ public class Lecteur implements Serializable {
     // -----------------------------------------------
     // Methodes
     // -----------------------------------------------
-
-    /*
-     * La méthode afficherLecteur affiche l'ensemble des informations relatives à un lecteur.
+    /**
+     * Affiche l'ensemble des informations relatives à un lecteur.
+     *
+     * Affiche le numéro de lecteur
+     *
      */
     public void afficherLecteur() {
-        EntreesSorties.afficherMessage("Numero lecteur : " + this.getNumLecteur());
-        EntreesSorties.afficherMessage("Nom et prenom du lecteur: " + this.getNom() + " " + this.getPrenom());
+        EntreesSorties.afficherMessage("--- " + this.getNomComplet() + " ---");
+        EntreesSorties.afficherMessage("Numéro : " + this.getNumLecteur());
         EntreesSorties.afficherMessage("Age : " + this.calculAge() + " ans");
         EntreesSorties.afficherMessage("Adresse : " + this.getAdresse());
         EntreesSorties.afficherMessage("Telephone : " + this.getTel());
-        EntreesSorties.afficherMessage("");
-    }
-
-    /*
-     * la méthode calculAge permet de déterminer l'age des lecteurs grace a leur date de naissance
-     * et la date actuelle. De cette façon, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
-     */
-    public Integer calculAge() {
-        Integer age;
-        GregorianCalendar dateNaissComp;
-        GregorianCalendar dateActuelle = new GregorianCalendar();
-        dateNaissComp = new GregorianCalendar(dateActuelle.get(GregorianCalendar.YEAR), _dateNaiss.get(GregorianCalendar.MONTH), _dateNaiss.get(GregorianCalendar.DATE));
-        if (dateNaissComp.before(dateActuelle)) {
-            age = dateActuelle.get(GregorianCalendar.YEAR) - _dateNaiss.get(GregorianCalendar.YEAR);
-        } else {
-            age = dateActuelle.get(GregorianCalendar.YEAR) - _dateNaiss.get(GregorianCalendar.YEAR) - 1;
-        }
-        return age;
+        EntreesSorties.afficherMessage("-----------------------");
     }
 
     /**
@@ -220,6 +228,25 @@ public class Lecteur implements Serializable {
 
     private void setTel(String tel) {
         this._tel = tel;
+    }
+
+    /**
+     * Permet de déterminer l'age des lecteurs grace a leur date de naissance
+     * et la date actuelle. De cette façon, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
+     *
+     * @return age du lecteur
+     */
+    private Integer calculAge() {
+        Integer age;
+        GregorianCalendar dateNaissComp;
+        GregorianCalendar dateActuelle = new GregorianCalendar();
+        dateNaissComp = new GregorianCalendar(dateActuelle.get(GregorianCalendar.YEAR), _dateNaiss.get(GregorianCalendar.MONTH), _dateNaiss.get(GregorianCalendar.DATE));
+        if (dateNaissComp.before(dateActuelle)) {
+            age = dateActuelle.get(GregorianCalendar.YEAR) - _dateNaiss.get(GregorianCalendar.YEAR);
+        } else {
+            age = dateActuelle.get(GregorianCalendar.YEAR) - _dateNaiss.get(GregorianCalendar.YEAR) - 1;
+        }
+        return age;
     }
 
 }

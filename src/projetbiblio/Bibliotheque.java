@@ -80,7 +80,7 @@ public class Bibliotheque implements Serializable {
                 age = dateActuelle.get(GregorianCalendar.YEAR) - dateNaiss.get(GregorianCalendar.YEAR) - 1;
             }
             if ((age <= 3) | (age >= 110)) {
-                EntreesSorties.afficherMessage("Age incorrecte (" + age + "), veuillez recommencer.");
+                EntreesSorties.afficherMessage("Age incorrect (" + age + "), veuillez recommencer.");
             } else {
                 EntreesSorties.afficherMessage("Age du lecteur : " + age + " ans");
             }
@@ -92,7 +92,6 @@ public class Bibliotheque implements Serializable {
         Lecteur L = new Lecteur(nom, prenom, numLecteur, dateNaiss, adresse, tel);
         lierLecteur(L, numLecteur);
         System.out.println("N° de Lecteur attribué : " + numLecteur);
-
     }
 
     /**
