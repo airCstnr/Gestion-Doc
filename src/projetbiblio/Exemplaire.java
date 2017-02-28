@@ -2,6 +2,11 @@
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
+/**
+ * Classe d'un Exemplaire de la bibliothèque
+ *
+ * @author castanir
+ */
 public class Exemplaire implements Serializable {
 
     // -----------------------------------------------
@@ -68,6 +73,11 @@ public class Exemplaire implements Serializable {
         return empruntable;
     }
 
+    /**
+     * Renvoie l'oeuvre.
+     *
+     * @return oeuvre
+     */
     public Oeuvre getOeuvre() {
         return oeuvre;
     }

@@ -3,7 +3,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-// Classe de gestion de Lecteur
+/**
+ * Classe de gestion de Lecteur.
+ * @author castanir
+ */
 public class Lecteur implements Serializable {
 
     private static final long serialVersionUID = 422L;
@@ -22,7 +25,21 @@ public class Lecteur implements Serializable {
     // -----------------------------------------------
     //Constructeur
     // -----------------------------------------------
-    public Lecteur(String nom, String prenom, Integer numLecteur, GregorianCalendar dateNaiss, String adresse, String tel, Integer ageLect) {
+    /**
+     * Constructeur de Lecteur.
+     * 
+     * Nécessite d'avoir son nom, prénom, date de naissance, adresse, tel.
+     * 
+     * 
+     * 
+     * @param nom
+     * @param prenom
+     * @param numLecteur
+     * @param dateNaiss
+     * @param adresse
+     * @param tel
+     */
+    public Lecteur(String nom, String prenom, Integer numLecteur, GregorianCalendar dateNaiss, String adresse, String tel) {
         this.setNom(nom);
         this.setPrenom(prenom);
         this.setNumLecteur(numLecteur);
@@ -91,6 +108,8 @@ public class Lecteur implements Serializable {
      * Utilise la date de naissance du lecteur pour renvoyer son age. ATTENTION
      * : L'age est déterminé uniquement par l'année de naissance, et non par son
      * anniversaire.
+     * 
+     * ATTENTION : à faire!!!
      *
      * @return age
      */

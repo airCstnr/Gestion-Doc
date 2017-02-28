@@ -46,13 +46,10 @@ public class Emprunt implements Serializable {
     /**
      * Renvoie la date de retour attendue de l'exemaplire.
      *
-     * ATTENTION : La date retournée est la date d'emprunt
-     * ATTENTION : Il faut trouver comment renvoyer une date + 8 jours
-     *
      * @return dateRetour
      */
     public GregorianCalendar getDateRetour() {
-        GregorianCalendar dateRetour = (GregorianCalendar)dateEmprunt.clone();
+        GregorianCalendar dateRetour = (GregorianCalendar) dateEmprunt.clone();
         dateRetour.add(GregorianCalendar.DAY_OF_MONTH, 8);
         return dateRetour;
     }
@@ -75,16 +72,15 @@ public class Emprunt implements Serializable {
 
     /**
      * Affiche les détails du lecteur, de l'exemplaire et de l'emprunt
-     * @return 
+     *
+     * @return
      */
     @Override
     public String toString() {
-        return lecteur.getNumLecteur().toString() + " " + lecteur.getNomComplet() + "\t" 
-                + exemplaire.getOeuvre().getNumISBN()+ " " + exemplaire.getOeuvre().getTitre() + " " + exemplaire.getNumExemplaire() + "\t" 
+        return lecteur.getNumLecteur().toString() + " " + lecteur.getNomComplet() + "\t"
+                + exemplaire.getOeuvre().getNumISBN() + " " + exemplaire.getOeuvre().getTitre() + " " + exemplaire.getNumExemplaire() + "\t"
                 + EntreesSorties.ecrireDate(dateEmprunt) + " " + EntreesSorties.ecrireDate(getDateRetour());
     }
-    
-    
 
 // -----------------------------------------------
 // Private

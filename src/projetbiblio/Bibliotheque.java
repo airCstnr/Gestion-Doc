@@ -4,10 +4,9 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
-
 /**
- * Classe de gestion de la Bibliotheque.
- * Interface de Gestion Documentaire.
+ * Classe de gestion de la Bibliotheque. Interface de Gestion Documentaire.
+ *
  * @author castanir
  */
 public class Bibliotheque implements Serializable {
@@ -17,9 +16,9 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     //Attributs
     // -----------------------------------------------
-    /*
-    * Le dictionnaire de lecteur permet à bibliotheque de 
-    * garantir l'unicité de ces derniers, et facilitent les recherches et créations.
+    /**
+     * Le dictionnaire de lecteur permet à bibliotheque de garantir l'unicité de
+     * ces derniers, et facilitent les recherches et créations.
      */
     private HashMap<Integer, Lecteur> _dicoLecteur;
 
@@ -48,7 +47,7 @@ public class Bibliotheque implements Serializable {
     }
 
 // -----------------------------------------------
-    // Public
+// Public
 // -----------------------------------------------
     // -----------------------------------------------
     // Méthodes
@@ -90,7 +89,7 @@ public class Bibliotheque implements Serializable {
         String tel = EntreesSorties.lireChaine("Entrez le numero de telephone :");
         EntreesSorties.afficherMessage("Fin de saisie");
 
-        Lecteur L = new Lecteur(nom, prenom, numLecteur, dateNaiss, adresse, tel, age);
+        Lecteur L = new Lecteur(nom, prenom, numLecteur, dateNaiss, adresse, tel);
         lierLecteur(L, numLecteur);
         System.out.println("N° de Lecteur attribué : " + numLecteur);
 
@@ -403,6 +402,11 @@ public class Bibliotheque implements Serializable {
     // -----------------------------------------------
     // Setters
     // -----------------------------------------------
+    /**
+     * Le dictionnaire de lecteur devient dicoLecteur.
+     *
+     * @param dicoLecteur
+     */
     private void setLecteurs(HashMap<Integer, Lecteur> dicoLecteur) {
         _dicoLecteur = dicoLecteur;
     }
@@ -411,25 +415,29 @@ public class Bibliotheque implements Serializable {
     // Méthodes
     // -----------------------------------------------
     /**
-     * La méthode getLecteur permet de rechercher dans la base de donnée de
-     * bibliotheque un objet lecteur identifié par son numéro, et de renvoyer
-     * l'objet. (ou la donnée null s'il n'est pas trouvé)
+     * Renvoie le lecteur de numLecteur.
+     *
+     * Permet de rechercher dans la base de donnée de bibliotheque un objet
+     * lecteur identifié par son numéro, et de renvoyer l'objet, null si non
+     * trouvé.
+     *
+     * @param numLecteur
+     *
+     * @return lecteur dont le numéro est numLecteur
      */
     private Lecteur getLecteur(Integer numLecteur) {
         return _dicoLecteur.get(numLecteur);
     }
 
     /**
-     * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de
-     * bibliotheque.
+     * Permet d'ajouter un lecteur a la base de donnée de bibliotheque.
      */
     private void lierLecteur(Lecteur L, Integer numLecteur) {
         _dicoLecteur.put(numLecteur, L);
     }
 
     /**
-     * La méthode lierOeuvre permet d'ajouter une Oeuvre a la base de donnée de
-     * bibliotheque.
+     * Permet d'ajouter une Oeuvre a la base de donnée de bibliotheque.
      *
      * @param o
      * @param numISBN
@@ -451,7 +459,7 @@ public class Bibliotheque implements Serializable {
      *
      * @param o
      * @param l
-     * @return
+     * @return true si l'age du lecteur correspond au public de l'oeuvre
      */
     private boolean compatibilitePublic(Oeuvre o, Lecteur l) {
         if (o.getPub() == EnumPublic.ENFANT) {

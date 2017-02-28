@@ -94,7 +94,7 @@ public class Oeuvre implements Serializable {
 
     /**
      * Renvoie le nom de l'auteur
-     * 
+     *
      * @return nomAuteur
      */
     public String getNomAuteur() {
@@ -103,12 +103,18 @@ public class Oeuvre implements Serializable {
 
     /**
      * Renvoie le nombre d'exemplaires présents dans la bibliothèque.
-     * @return 
+     *
+     * @return nombreExemplaires
      */
     public int getNombreExemplaires() {
         return nombreExemplaires;
     }
 
+    /**
+     * Renvoie le public qui peut emprunter l'oeuvre
+     * 
+     * @return public
+     */
     public EnumPublic getPub() {
         return pub;
     }
