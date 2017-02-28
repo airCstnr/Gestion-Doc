@@ -19,7 +19,7 @@ public class Main {
                 
                 
 		String nomFich;
-                Integer vidange,brouillon,backup;
+                int vidange,brouillon,backup;
                 nomFich="default.ser";
                 vidange=brouillon=backup=0;
                                 
@@ -111,22 +111,21 @@ public class Main {
         }
         
         
-        private void menuSortie (String nomFich, Integer vidange,Integer brouillon,Integer backup, Bibliotheque bibliotheque) {
+        private void menuSortie (String nomFich, int vidange,int brouillon,int backup, Bibliotheque bibliotheque) {
             /*---------------------------------------------------------------------------------------------
 		 * Sérialisation dans le fichier du nom de "save.ser".
 		 * L'utilisateur est informé de la réussite ou non de la sauvegarde des données.
 		*/
                 
-                if ( vidange.equals(1) )
+                if ( vidange == 1 )
                 {
                     EntreesSorties.afficherMessage(" *** Start :  Merci d'avoir testé A bientôt !");
                     EntreesSorties.afficherMessage(" *** Start :  Réinitialisation du Fichier " + nomFich);
                 }
                 
-                if ( brouillon.equals(1) )
+                if ( brouillon == 1 )
                 {
-                    Integer menuBrouillon,zero;
-                    zero=0;
+                    Integer menuBrouillon;
                         
                     do {
                         EntreesSorties.afficherMessage(" ========================================================");
@@ -137,43 +136,33 @@ public class Main {
                         EntreesSorties.afficherMessage(" ========================================================");
                         menuBrouillon = EntreesSorties.lireEntier();
                         switch (menuBrouillon) {
+                            /* Suppression du fichier brouillon*/
                             case 1: {
-                                zero=1;
+                                new File("./brouillon.ser").delete();
+                                EntreesSorties.afficherMessage(" *** Start :  Réinitialisation du brouillon         !");
+                                EntreesSorties.afficherMessage(" *** Start :  Merci d'avoir fais vos test A bientôt !");
                                 break;
                             }
+                            /* Sauvegarde du fichier brouillon*/
                             case 2: {
-                                zero=2;
+                                serialization(bibliotheque,nomFich);
+                                EntreesSorties.afficherMessage(" *** Start :  Sauvegarde du brouillon               !");
+                                EntreesSorties.afficherMessage(" *** Start :  Merci d'avoir fais vos test A bientôt !");
                                 break;
                             }
-                            default: {
+                            /* Sauvegarde par default du brouillon */
+                            default: {                                
+                                serialization(bibliotheque,nomFich);
+                                EntreesSorties.afficherMessage(" *** Start :  Sauvegarde du brouillon par defaut            !");
+                                EntreesSorties.afficherMessage(" *** Start :  Merci d'avoir fais vos test A bientôt         !");
                                 break;
                             }
                         }
                     } while (menuBrouillon != 0 && menuBrouillon != 2 && menuBrouillon != 1);
-                        
-                        /* Suppression du fichier brouillon*/
-                        
-                    if (zero.equals(1))
-                    {
-                        new File("./brouillon.ser").delete();                            
-                    }
-                        
-                        /* Sauvegarde du fichier brouillon*/
-                                               
-                    if (zero.equals(2))
-                    {
-                        serialization(bibliotheque,nomFich);
-                    }
                     
-                        /* Sauvegarde par default du brouillon */
-                    
-                    else
-                    {
-                        serialization(bibliotheque,nomFich);
-                    }
                 }
                 
-                if ( backup.equals(1) )
+                if ( backup ==1 )
                 {
                     Integer savebackup=0;
                     do {
@@ -189,11 +178,15 @@ public class Main {
                     if ( savebackup.equals(1) )
                     {
                         serialization(bibliotheque,nomFich);
+                        EntreesSorties.afficherMessage(" *** Start :  Sauvegarde du fichier backup              !");
+                        EntreesSorties.afficherMessage(" *** Start :  Pensez à le copié dans le fichier de test !");
                     }
                     if ( savebackup.equals(2) )
                     {
                         nomFich = "brouillon.ser";
                         serialization(bibliotheque,nomFich);
+                        EntreesSorties.afficherMessage(" *** Start :  Sauvegarde du fichier backup dans brouillon  !");
+                        EntreesSorties.afficherMessage(" *** Start :  Merci d'avoir fais vos test A bientôt        !");
                     }
                     
                     
