@@ -119,6 +119,7 @@ public class Oeuvre implements Serializable {
      * Affiche le titre et l'ISBN de l'oeuvre
      */
     public void afficherReduit() {
+        
         EntreesSorties.afficherMessage("--- Titre : " + this.getTitre() + " ---");
         EntreesSorties.afficherMessage("N°ISBN : " + this.getNumISBN());
     }
@@ -129,9 +130,9 @@ public class Oeuvre implements Serializable {
     public void afficherDetails() {
         EntreesSorties.afficherMessage("Auteur : " + this.getNomAuteur());
         EntreesSorties.afficherMessage("Editeur : " + this.getNomEditeur());
-        EntreesSorties.afficherMessage("Date de Parution : ");
-        String date = EntreesSorties.ecrireDate(this.getDateParution());
-        System.out.println(date);
+        EntreesSorties.afficherMessage("Date de Parution : " + EntreesSorties.ecrireDate(this.getDateParution()));
+        EntreesSorties.afficherMessage("Public : " + this.getPub());
+        EntreesSorties.afficherMessage("------------------------ ");
     }
 
     /**
@@ -139,8 +140,11 @@ public class Oeuvre implements Serializable {
      */
     public void afficherExemplaire() {
         for (Exemplaire e : exemplaires.values()) {
+            EntreesSorties.afficherMessage("------------------------- ");
             e.afficherNumExemplaire();
+            e.afficheDetails();
         }
+        EntreesSorties.afficherMessage("------------------------- ");
     }
 
 }
