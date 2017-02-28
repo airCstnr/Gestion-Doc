@@ -2,7 +2,6 @@
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * Classe de gestion de la Bibliotheque. Interface de Gestion Documentaire.
