@@ -144,7 +144,8 @@ public class Bibliotheque implements Serializable {
         Oeuvre o = getOeuvre(nISBN);
         if (o != null) {
             GregorianCalendar dateR = EntreesSorties.lireDate("Date de Récéption : ");
-            o.ajoutExemplaire(dateR, true);
+            boolean empruntabilite = EntreesSorties.lireEntier("Exemplaire Empruntable (0 pour oui / autre pour non) : ") == 0;
+            o.ajoutExemplaire(dateR, empruntabilite);
             EntreesSorties.afficherMessage("La création de l'exemplaire est réussie.");
         }
     }
