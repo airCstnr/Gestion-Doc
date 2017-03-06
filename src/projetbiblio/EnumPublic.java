@@ -1,6 +1,6 @@
 
 /**
- * Ennumération des différents types de public de la bibliothèque.
+ * Enumération des différents types de public de la bibliothèque.
  * 
  * Enfant : age <= 10 ans
  * Ado : 10 ans < age <= 16 ans

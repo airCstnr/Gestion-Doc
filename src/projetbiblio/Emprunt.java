@@ -2,6 +2,13 @@
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
+/**
+ * Classe Emprunt de bibliothèque.
+ * 
+ * Association entre un lecteur et un exemplaire.
+ * 
+ * @author raphael
+ */
 public class Emprunt implements Serializable {
 
     // -----------------------------------------------
@@ -14,6 +21,15 @@ public class Emprunt implements Serializable {
     // -----------------------------------------------
     // Constructeur
     // -----------------------------------------------
+    /**
+     * Constructeur de Emprunt.
+     * 
+     * Nécessite de connaitre le lecteur et l'exemplaire.
+     * 
+     * @param dateEmprunt
+     * @param lecteur
+     * @param exemplaire 
+     */
     public Emprunt(GregorianCalendar dateEmprunt, Lecteur lecteur, Exemplaire exemplaire) {
         this.dateEmprunt = dateEmprunt;
         this.lecteur = lecteur;
@@ -26,16 +42,26 @@ public class Emprunt implements Serializable {
     // -----------------------------------------------
     // Getters
     // -----------------------------------------------
+    /**
+     * Renvoie le lecteur qui a emprunté l'exemplaire.
+     * 
+     * @return lecteur
+     */
     public Lecteur getLecteur() {
         return lecteur;
     }
 
+    /**
+     * Renvoie l'exemplaire emprunté par le lecteur.
+     * 
+     * @return exemplaire
+     */
     public Exemplaire getExemplaire() {
         return exemplaire;
     }
 
     /**
-     * Renvoie la date d'emprunt de l'exemplaire.
+     * Renvoie la date d'emprunt.
      *
      * @return dateEmprunt
      */
@@ -44,7 +70,7 @@ public class Emprunt implements Serializable {
     }
 
     /**
-     * Renvoie la date de retour attendue de l'exemaplire.
+     * Renvoie la date de retour attendue.
      *
      * @return dateRetour
      */
@@ -73,7 +99,7 @@ public class Emprunt implements Serializable {
     /**
      * Affiche les détails du lecteur, de l'exemplaire et de l'emprunt
      *
-     * @return
+     * @return 
      */
     @Override
     public String toString() {
