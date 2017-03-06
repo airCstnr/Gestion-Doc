@@ -372,7 +372,9 @@ public class Bibliotheque implements Serializable {
         for (Lecteur l : _dicoLecteur.values()) {
             if (l.getNbEmprunts() != 0) {
                 for (Emprunt e : l.getEmprunts()) {
-                    if (e.getDateRetour().before(new GregorianCalendar())) { // ATTENTION : La date de relance est de 15 jours, pas juste 8 jours!! O.o
+                    GregorianCalendar today = new GregorianCalendar(); // on prend la date d'aujourd'hui
+                    today.add(GregorianCalendar.DAY_OF_MONTH, -15); // on lui retire 15 jours
+                    if (e.getDateRetour().before(today)) { // on la compare avec la date de retour attendue
                         EntreesSorties.afficherMessage(e.toString());
                     }
                 }
