@@ -417,9 +417,9 @@ public class EntreesSorties  {
 	 */
 	public static void afficherTitreMenu(String titre) {
 		System.out.println();
-                System.out.println("-----------------------------");
+                System.out.println("----------------------------------------");
 		System.out.println(titre);
-		System.out.println("-----------------------------");
+		System.out.println("----------------------------------------");
                 System.out.println();
 	}
 

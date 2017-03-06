@@ -103,9 +103,27 @@ public class Emprunt implements Serializable {
      */
     @Override
     public String toString() {
-        return lecteur.getNumLecteur().toString() + " " + lecteur.getNomComplet() + "\t"
-                + exemplaire.getOeuvre().getNumISBN() + " " + exemplaire.getOeuvre().getTitre() + " " + exemplaire.getNumExemplaire() + "\t"
-                + EntreesSorties.ecrireDate(dateEmprunt) + " " + EntreesSorties.ecrireDate(getDateRetour());
+        return lecteur.getNumLecteur().toString() + "\t " + lecteur.getNomComplet() + "\t"
+                + exemplaire.getOeuvre().getNumISBN() + "\t" + exemplaire.getOeuvre().getTitre() + "\t" + exemplaire.getNumExemplaire() + "\t"
+                + EntreesSorties.ecrireDate(dateEmprunt) + "\t" + EntreesSorties.ecrireDate(getDateRetour());
+    }
+    
+    public void afficherDetails() {
+        
+        EntreesSorties.afficherMessage("--- Lecteur : " + lecteur.getNomComplet());
+        EntreesSorties.afficherMessage("Num Lecteur : " + lecteur.getNumLecteur().toString() );
+        EntreesSorties.afficherMessage("--- N° ISBN : " + exemplaire.getOeuvre().getNumISBN());
+        EntreesSorties.afficherMessage("Titre :" + exemplaire.getOeuvre().getTitre() );
+        EntreesSorties.afficherMessage("Numero d'exemplaire : " + exemplaire.getNumExemplaire() );
+        EntreesSorties.afficherMessage("-- Dates --");
+        EntreesSorties.afficherMessage("Date d'emprunt : " + EntreesSorties.ecrireDate(dateEmprunt) );
+        EntreesSorties.afficherMessage("Date de retour : " + EntreesSorties.ecrireDate(getDateRetour()) );
+        EntreesSorties.afficherMessage("-------------------------");
+    }
+    public void afficherDetailsPourOeuvre() {
+        EntreesSorties.afficherMessage("--- Emprunté par le lecteur numéro : " + lecteur.getNumLecteur().toString());
+        EntreesSorties.afficherMessage("Date d'emprunt : " + EntreesSorties.ecrireDate(dateEmprunt) );
+        EntreesSorties.afficherMessage("Date de retour : " + EntreesSorties.ecrireDate(getDateRetour()) );        
     }
 
 // -----------------------------------------------

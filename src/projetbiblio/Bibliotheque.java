@@ -359,6 +359,10 @@ public class Bibliotheque implements Serializable {
                 EntreesSorties.afficherMessage(e.toString());
             }
         }
+        else
+        {
+            EntreesSorties.afficherMessage(" Ce lecteur n'a emprunté aucun livre pour le moment ");
+        }
     }
 
     /**
@@ -371,17 +375,16 @@ public class Bibliotheque implements Serializable {
      */
     public void relancerLecteur() {
         EntreesSorties.afficherTitre("-- Relancer lecteur --");
-        EntreesSorties.afficherMessage("Num Lect / Nom / Prénom / N°ISBN / Titre / Num Ex / Date d'emprunt / Date de retour ");
         for (Lecteur l : _dicoLecteur.values()) {
             if (l.getNbEmprunts() != 0) {
                 for (Emprunt e : l.getEmprunts()) {
                     GregorianCalendar today = new GregorianCalendar(); // on prend la date d'aujourd'hui
                     today.add(GregorianCalendar.DAY_OF_MONTH, -15); // on lui retire 15 jours
                     if (e.getDateRetour().before(today)) { // on la compare avec la date de retour attendue
-                        EntreesSorties.afficherMessage(e.toString());
+                        e.afficherDetails();
                     }
                 }
-            }
+            }            
         }
     }
 
@@ -392,11 +395,10 @@ public class Bibliotheque implements Serializable {
      */
     public void consulterListeEmprunts() {
         EntreesSorties.afficherTitre("-- Liste emprunts --");
-        EntreesSorties.afficherMessage("Num Lect / Nom / Prénom / N°ISBN / Titre / Num Ex / Date d'emprunt / Date de retour ");
         for (Lecteur l : _dicoLecteur.values()) {
             if (l.getNbEmprunts() != 0) {
                 for (Emprunt e : l.getEmprunts()) {
-                    EntreesSorties.afficherMessage(e.toString());
+                    e.afficherDetails();
                 }
             }
         }

@@ -181,9 +181,11 @@ public class Oeuvre implements Serializable {
             EntreesSorties.afficherMessage("-------------------------");
             e.afficherNumExemplaire();
             e.afficheDetails();
-            EntreesSorties.afficherMessage("-----------------------");
-            EntreesSorties.afficherMessage("");
+            if (e.getEmprunt()!=null) {
+                e.getEmprunt().afficherDetailsPourOeuvre();
+            }            
         }
+        EntreesSorties.afficherMessage("-------------------------");
     }
 
 }

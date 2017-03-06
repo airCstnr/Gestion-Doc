@@ -36,7 +36,7 @@ public class MenuBiblio {
                     break;
                 }
                 default: {
-                    EntreesSorties.afficherTitreMenu("Quitter");
+                    EntreesSorties.afficherTitreMenu("\tMerci et A Bientôt");
                     break;
                 }
             }
@@ -75,7 +75,7 @@ public class MenuBiblio {
                     break;
                 }
                 default: {
-                    EntreesSorties.afficherTitreMenu("Quitter");
+                    EntreesSorties.afficherTitreMenu("\tRetour au Menu Principal");
                     break;
                 }
             }
@@ -121,7 +121,7 @@ public class MenuBiblio {
                     break;
                 }
                 default: {
-                    EntreesSorties.afficherTitreMenu("Quitter");
+                    EntreesSorties.afficherTitreMenu("\tRetour au Menu Principal");
                     break;
                 }
             }
@@ -167,7 +167,7 @@ public class MenuBiblio {
                     break;
                 }
                 default: {
-                    EntreesSorties.afficherTitreMenu("Quitter");
+                    EntreesSorties.afficherTitreMenu("\tRetour au Menu Principal");
                     break;
                 }
             }

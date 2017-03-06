@@ -180,6 +180,7 @@ public class Lecteur implements Serializable {
         EntreesSorties.afficherMessage("Adresse : " + this.getAdresse());
         EntreesSorties.afficherMessage("Telephone : " + this.getTel());
         EntreesSorties.afficherMessage("-----------------------");
+        EntreesSorties.afficherMessage("");
     }
 
     /**
