@@ -408,7 +408,19 @@ public class EntreesSorties  {
 	public static void afficherTitre(String titre) {
 		System.out.println();
 		System.out.println(titre);
+                System.out.println();
+	}
+        
+        /**
+	 * Affichage d'un titre. On fait précéder et suivre le texte reçu par une ligne blanche.
+	 * @param titre titre à afficher
+	 */
+	public static void afficherTitreMenu(String titre) {
 		System.out.println();
+                System.out.println("-----------------------------");
+		System.out.println(titre);
+		System.out.println("-----------------------------");
+                System.out.println();
 	}
 
 	/**

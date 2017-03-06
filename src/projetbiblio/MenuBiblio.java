@@ -36,6 +36,7 @@ public class MenuBiblio {
                     break;
                 }
                 default: {
+                    EntreesSorties.afficherTitreMenu("Quitter");
                     break;
                 }
             }
@@ -74,6 +75,7 @@ public class MenuBiblio {
                     break;
                 }
                 default: {
+                    EntreesSorties.afficherTitreMenu("Quitter");
                     break;
                 }
             }
@@ -119,6 +121,7 @@ public class MenuBiblio {
                     break;
                 }
                 default: {
+                    EntreesSorties.afficherTitreMenu("Quitter");
                     break;
                 }
             }
@@ -164,7 +167,7 @@ public class MenuBiblio {
                     break;
                 }
                 default: {
-                    EntreesSorties.afficherTitre("Pas un choix.");
+                    EntreesSorties.afficherTitreMenu("Quitter");
                     break;
                 }
             }

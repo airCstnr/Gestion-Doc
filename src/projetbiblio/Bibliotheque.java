@@ -330,6 +330,11 @@ public class Bibliotheque implements Serializable {
             EntreesSorties.afficherMessage("L'exemplaire de numéro " + numEx + " n'existe pas.");
             return;
         }
+        
+        if (exemplaire.getEmprunt()==null) {
+            EntreesSorties.afficherMessage("L'exemplaire de numéro " + numEx + " n'est pas emprunté.");
+            return;
+        }
         Emprunt emprunt = exemplaire.getEmprunt();
         emprunt.deleteEmprunt();
         EntreesSorties.afficherMessage("L'exemplaire est rendu!");
