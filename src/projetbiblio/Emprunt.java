@@ -108,6 +108,10 @@ public class Emprunt implements Serializable {
                 + EntreesSorties.ecrireDate(dateEmprunt) + "\t" + EntreesSorties.ecrireDate(getDateRetour());
     }
     
+    
+    /**
+     * Affiche les détails de l'emprunt dans une mise en page particulière.
+     */
     public void afficherDetails() {
         
         EntreesSorties.afficherMessage("--- Lecteur : " + lecteur.getNomComplet());
@@ -120,6 +124,11 @@ public class Emprunt implements Serializable {
         EntreesSorties.afficherMessage("Date de retour : " + EntreesSorties.ecrireDate(getDateRetour()) );
         EntreesSorties.afficherMessage("-------------------------");
     }
+    
+    
+    /**
+     * Affiche les détails minimaux de l'emprunt mis en page (lecteur, dates)
+     */
     public void afficherDetailsPourOeuvre() {
         EntreesSorties.afficherMessage("--- Emprunté par le lecteur numéro : " + lecteur.getNumLecteur().toString());
         EntreesSorties.afficherMessage("Date d'emprunt : " + EntreesSorties.ecrireDate(dateEmprunt) );
