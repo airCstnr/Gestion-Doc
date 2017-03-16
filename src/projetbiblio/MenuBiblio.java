@@ -49,7 +49,7 @@ public class MenuBiblio {
      * une nouvelle fois une action concernant les lecteurs.
      * "Retour Menu Principal" renvoie l'utilisateur au menu principal.
      */
-    public void menuLecteur() {
+    private void menuLecteur() {
         Integer menuLect;
         do {
             EntreesSorties.afficherMessage(" ========================================================");
